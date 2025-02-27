@@ -2,7 +2,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/imagen-fondo.jpg?v=1740641746602') no-repeat center center fixed;
+    background: url('imagenes/imagen-fondo.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     text-align: center;
@@ -26,10 +26,18 @@ header {
     height: 150px;
 }
 
+.title{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
 .title h1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     font-family: 'Courier New', Courier, monospace;
     font-size: 95px;
-    padding-top: 22px;
+    padding-top: 2px;
     margin-top: 0px;
     color: white;
 }
@@ -120,18 +128,24 @@ header {
 
 
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     header {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         height: auto;
+        padding-top: 60px;
     }
 
-    .title h1 {
-        font-size: 60px; 
-        padding-top: 30px;
+    .title {
+        display: block;
+        margin: 0px;
+    }
+
+    .title h1 span{
+        font-size: 75px;
+        padding-top: 0px;
     }
 
     .grid-container {
