@@ -14,7 +14,7 @@ body {
 
 /* Sección Encabezado */
 .encabezado {
-    background-image: url(https://cdn.glitch.global/029641d7-a2be-42bd-b961-42740f11eaa6/Encabezado.jpg?v=1740542435653);
+    background-image: url(https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Encabezado.jpg?v=1741594966493);
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode:multiply;
@@ -154,7 +154,7 @@ body {
     margin: 50px ;
     align-items: center;
     background-size: cover;
-    background-image: url(https://cdn.glitch.global/029641d7-a2be-42bd-b961-42740f11eaa6/Imagen-Avatar.jpg?v=1740542446752);
+    background-image: url(https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Imagen-Avatar.jpg?v=1741594972138);
     background-position: center top;
     z-index: 10;
 }
