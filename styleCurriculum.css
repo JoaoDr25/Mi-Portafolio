@@ -1,0 +1,556 @@
+body {
+    background-color: #d6d6d6;
+    font-family: Arial, sans-serif;
+    padding-top: 5px;
+    max-width: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 21% 3% 20% auto;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección Encabezado */
+.encabezado {
+    background-image: url(https://cdn.glitch.global/029641d7-a2be-42bd-b961-42740f11eaa6/Encabezado.jpg?v=1740542435653);
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode:multiply;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.part1 {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 80px;
+    color: white;
+}
+
+.encabezado h1 {
+    margin-bottom: 0%;
+    font-size: 60px;
+    margin-top: 0px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.encabezado h6 {
+    font-size: 18px;
+    margin-top: 4px;
+    padding-left: 4px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #f2f2f2;
+}
+
+.encabezado p {
+    font-size: 13px;
+}
+
+.part2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.part2 button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    background-color: rgba(0, 183, 255, 0.774);
+    border-radius: 40px;
+    font-size: 16px;
+    border-width: 0;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    padding-left: 25px;
+    transition: all 0.2s ease;
+}
+
+.part2 button:hover {
+    transform: scale(1.05);
+}
+
+.part2 button:active {
+    transform: scale(0.95);
+    background-color: rgba(0, 140, 200, 0.9);
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.part2 button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.part2 p {
+    color: white;
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.part2 span {
+    cursor: pointer;
+}
+
+.email {
+    display: inline-block;
+    color: rgba(0, 183, 255, 0.774);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email:hover {
+    box-shadow: 0px rgba(255, 255, 255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.04);
+}
+
+/* Sección Menú */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.menu h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 4px; 
+    cursor: pointer; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease;
+    width: auto;
+    font-size: 15px;
+    padding-left: 35px; 
+    padding-right: 35px;
+    transition: all 0.3s ease;
+}
+
+.menu h4:hover {
+    border: 2px solid rgba(0, 183, 255, 0.774);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.imageavatar {
+    width: 100px;
+    height: 100px;
+    border: 10px solid white;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    margin: 50px ;
+    align-items: center;
+    background-size: cover;
+    background-image: url(https://cdn.glitch.global/029641d7-a2be-42bd-b961-42740f11eaa6/Imagen-Avatar.jpg?v=1740542446752);
+    background-position: center top;
+    z-index: 10;
+}
+
+/* Sección Información*/
+.information {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.block1 p {
+    line-height: 1.5;
+}
+
+.block1, .block2, .block3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fafafa;
+}
+
+.block2 {
+    background: #f5f5f5; 
+}
+
+.block2 .textblock p {
+    line-height: 1.2;
+}
+
+.textblock {
+    padding: 80px;
+    gap: 5px;
+}
+
+.textblock i {
+    margin-bottom: -5px;
+}
+
+.textblock h3 {
+    font-size: 28px;
+    font-weight: 300;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.textblock h3, p {
+    line-height: 1.0;
+}
+
+.firstline {
+    font-size: 18px;
+}
+
+.textblock button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: rgba(0, 183, 255, 0.774);
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid rgba(0, 183, 255, 0.774);
+    font-size: 15px;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    padding-left: 22px;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.textblock button:hover {
+    transform: scale(1.05); 
+}
+
+.textblock button:active {
+    transform: scale(0.95);
+    background-color: rgba(0, 140, 200, 0.9);
+}
+
+.block2 p {
+    line-height: 1;
+}
+
+.iconos {
+    display: flex;
+    gap: 15px; 
+    padding-top: 50px;
+}
+
+.iconos i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.iconos i:hover {
+    transform: scale(1.3); 
+}
+
+/* Sección MyResume */
+.main {
+    margin-left: 80px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-top: 90px;
+}
+
+.myresume h3 {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    font-size: 30px;
+}
+
+.bar {
+    font-size: 17px;
+    margin-left: -82px;
+}
+
+.resume {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: auto auto; 
+    gap: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 80px;
+}
+
+.resume h3 {
+    font-size: 28px;
+}
+
+.content1 { 
+    grid-column: 1; 
+    grid-row: 1; 
+    padding-left: 30px;
+    height: fit-content;
+} 
+
+.content2 { 
+    grid-column: 1; 
+    grid-row: 2; 
+    height: fit-content;
+    height: 250px;
+} 
+
+.ubication-interests {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: auto auto;
+    padding-top: 50px;
+    justify-items: center; 
+    padding-left: 10px;
+    margin-left: -20px;
+}
+
+
+.ubication-interests i {
+    width: 60px; 
+    height: 30px; 
+    border: 2px solid rgba(0, 140, 200, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px; 
+    grid-row: 1; 
+    padding-bottom: 15px;
+    
+}
+
+.ubication-interests p {
+    padding-top: 10px;
+    grid-row: 2; 
+}
+
+.content3 { 
+    grid-column: 2; 
+    grid-row: 1 / span 2;
+    height: fit-content;
+    padding-right: 40px;
+} 
+
+.content4 { 
+    grid-column: 3; 
+    grid-row: 1; 
+    height: fit-content;
+} 
+
+.content4 i {
+    padding-left: 50px;
+}
+
+.content5 { 
+    grid-column: 3; 
+    grid-row: 2; 
+    height: fit-content;
+} 
+
+.content1, .content2, .content3, .content4, .content5 {
+    background: white;
+    padding-left: 60px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.content1 ul li, .content3 ul li {
+    color: black; 
+}
+
+.content1 ul li::marker, .content3 ul li::marker {
+    color: rgba(0, 140, 200, 0.9);
+    font-size: 1.5em;
+}
+
+.myresume {
+    padding-top: 40px;
+    width: 100%;
+    height: 1080px
+}
+
+.resume i {
+    padding-top: 15px;
+}
+
+.title-resume {
+    padding-left: 0%;
+    padding-bottom: 0px;
+    padding-top: 10%;
+}
+
+.resume p em {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+     line-height: 1.2;
+}
+
+.resume h3 {
+    display: flex;
+    align-items: center; 
+    font-weight: 300;
+    gap: 10px; 
+    margin: 0;
+    padding-top: 0px;
+}
+
+.line {
+    display: flex;
+    align-content: flex-start;
+    gap: 100px;
+    padding-bottom: 10px;
+}
+
+.line i {
+    font-size: 50px; 
+    color: gainsboro;
+}
+
+.actualmente {
+    background-color: rgba(0, 140, 200, 0.9);
+    color: white; 
+    padding: 2px 6px; 
+    border-radius: 10px; 
+}
+
+
+
+/* Para smartphones (pantallas menores a 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        display: grid;
+        grid-template-rows: repeat(1, 410px 650px auto 2600px);
+        width: 620px;
+
+    }
+
+    /* Sección Encabezado */
+    .encabezado {
+        background-size: 1000px;
+        background-position: calc(0% - 160px) center;
+        height: 400px;
+        width: 620px;
+        padding-bottom: 1px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .part1 {
+        padding-left: 20px;
+        padding-top: 30px;
+    }
+
+    .encabezado h1 {
+        font-size: 40px;
+    }
+
+    .encabezado h6 {
+        font-size: 10px;
+    }
+
+    .encabezado p {
+        font-size: 8px;
+        padding-top: 10px;
+    }
+
+    .part2 {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        padding-top: 180px;
+
+    }
+
+    .part2 p {
+        font-size: 16px;
+        padding-bottom: 90px;
+    }
+
+    /* Sección Menú */
+   .menu {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 70px 70px 70px 220px 70px 70px 70px;
+        width: 620px;
+    }
+
+    .menu h4 {
+        width: 480px;
+    }
+
+
+    /* Sección Información*/
+    .information {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        width: 620px;
+    }
+
+    .textblock {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    .block1 {
+        height: 10px;
+    }
+
+    .block2 {
+        height: 1%;
+        background-color: rgb(245, 244, 244);
+    }
+
+
+   /* Sección MyResume */
+    .myresume {
+        padding-top: 0%;
+    }
+
+    .title {
+        padding-bottom: 12px;
+    }
+
+    .main {
+        margin-top: 0%;
+        margin-left: 80px;
+        padding-top: 15px;
+    }
+
+    .resume {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        width: 550px;
+        padding-top: 0%;
+    }
+
+    .line {
+        margin-left: 0%;
+        display: flex;
+        justify-content: space-between;
+        width: 450px;
+    }
+
+    .title {
+        padding-bottom: 0px;
+    }
+
+    .ubication-interests {
+        padding-top: 30px;
+    }
+}
