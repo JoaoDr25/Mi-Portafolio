@@ -530,12 +530,14 @@ p {
 
 
     /* Sección MyResume */
+   .main {
+        margin-top: 0px;
+    }
+  
     .myresume {
         padding-top: 0%;
         width: 100%;
     }
-  
-    
 
     .resume {
         display: flex;
