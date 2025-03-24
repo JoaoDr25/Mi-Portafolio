@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 60%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .info-personal {
+            background-color: #e6f7ff;
+        }
+        .hobbies {
+            background-color: #fff7e6;
+        }
+        .contacto {
+            background-color: #e6ffe6;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi Perfil</h1>
+        <div class="section sobre-mi">
+            <h2>Sobre Mí</h2>
+            <p>Hola, me llamo <span id="nombre">[Tu Nombre]</span>. Me gusta aprender sobre tecnología y explorar nuevas actividades. Vivo en <span id="ciudad">[Tu Ciudad]</span> y disfruto pasar tiempo con mis amigos y familia.</p>
+        </div>
+        <div class="section info-personal">
+            <h2>Información Personal</h2>
+            <p><strong>Edad:</strong> <span id="edad">[Tu Edad]</span></p>
+            <p><strong>Profesión:</strong> <span id="profesion">[Tu Profesión]</span></p>
+            <p><strong>Intereses:</strong> Programación, música, deportes</p>
+        </div>
+        <div class="section hobbies">
+            <h2>Mis Hobbies</h2>
+            <ul>
+                <li>Leer libros de ciencia ficción</li>
+                <li>Jugar fútbol</li>
+                <li>Ver series de televisión</li>
+                <li>Escuchar música</li>
+            </ul>
+        </div>
+        <div class="section contacto">
+            <h2>Contacto</h2>
+            <p>Puedes encontrarme en:</p>
+            <p><a href="https://linkedin.com" target="_blank">LinkedIn</a></p>
+            <p><a href="mailto:tucorreo@example.com">tucorreo@example.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
