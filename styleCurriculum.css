@@ -444,7 +444,7 @@ p {
 
     .container {
         display: grid;
-        grid-template-rows: repeat(1, 410px 650px auto 2600px);
+        grid-template-rows: repeat(1, 410px 650px auto 2500px);
         width: 100%;
     }
 
@@ -498,7 +498,7 @@ p {
     }
 
     .menu h4 {
-        width: 80%;
+        width: 70%;
     }
 
     .imageavatar {
@@ -531,7 +531,7 @@ p {
 
     /* Sección MyResume */
    .main {
-        margin-top: 0px;
+        margin-top: 10px;
     }
   
     .myresume {
