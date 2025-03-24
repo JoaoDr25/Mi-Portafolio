@@ -450,7 +450,7 @@ p {
 
     /* Sección Encabezado */
     .encabezado {
-        background-position: calc(0% - 160px) center;
+        background-position: calc(50% - 0%) center;
         width: 100%;
         flex-direction: column;
         justify-content: space-between;
@@ -534,6 +534,8 @@ p {
         padding-top: 0%;
         width: 100%;
     }
+  
+    
 
     .resume {
         display: flex;
