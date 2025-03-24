@@ -129,21 +129,27 @@ header {
 
 
 @media (max-width: 600px) {
-    header {
+    .header {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        height: auto;
+        width: 100%;
         padding-top: 60px;
     }
 
     .title {
-        display: block;
+        display: flex;
+        justify-content: center;
         margin: 0px;
+        width: 100%;
     }
 
-    .title h1 span{
+    .title h1 {
+        width: 100%;
+    }
+
+    .title h1 span {
         font-size: 75px;
         padding-top: 0px;
     }
@@ -155,11 +161,10 @@ header {
         flex-direction: column;
         justify-items: center;
         margin-top: 5px;
-        width: 100%;
+        padding-left: 30px;
     }
 
     .project {
-        width: 90%; 
-        max-width: 400px; 
+        width: 90%;
     }
 }
