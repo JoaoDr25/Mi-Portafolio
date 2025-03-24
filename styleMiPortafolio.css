@@ -121,12 +121,13 @@ header {
     height: 150px;
 }
 
-.project:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+.project:nth-child(5) {
+    grid-column: span 2; 
+    justify-self: center; 
 }
 
 
+/* ---------------------------------------------------------------------------------------------------------------------- */
 
 @media (max-width: 600px) {
     .header {
