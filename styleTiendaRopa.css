@@ -1,0 +1,170 @@
+body {
+    display: grid;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #F5F5F5
+}
+
+
+/* Header */
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    gap: 20px;
+}
+
+
+/* Menu */
+.menu {
+    display: flex;
+    justify-content: start;
+    background-color: white;
+    cursor: pointer;
+}
+
+.menu h4 {
+    padding-right: 55px;
+    padding-left: 35px;
+}
+
+
+/* Principal Banner */
+.banners {
+    display: flex;
+    padding: 30px;
+    background-color: white;
+    height: 600px;
+    gap: 10px;
+}
+
+.banners h1 {
+    color: white;
+    font-size: 50px;
+    font-weight: 340;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.banners span {
+    font-size: 70px;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 0.8;
+}
+
+.primerBanner {
+    width: 60%;
+    background-image: url(Imagenes/Modelo\ Principal.webp);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.segundoBanner {
+    background-image: url(Imagenes/New\ Arrivals.avif);
+    background-size: cover;
+    height: 50%;
+    display: flex;
+    display: block;
+    justify-content: space-between;
+}
+
+.segundoBanner h1 {
+    color: black;
+}
+
+.tercerBanner {
+    background-image: url(Imagenes/Big\ Clearance.avif);
+    background-size: cover;
+    height: 50%;
+    display: flex;
+    display: block;
+    justify-content: space-between;
+}
+
+.tercerBanner p {
+    color: white;
+}
+
+.separateBanners {
+    width: 40%;
+}
+
+.separateBanners h1 {
+    margin-top: 0%;
+}
+
+.separateBanners p {
+    padding-top: 80px;
+}
+
+
+/* New Products Section */
+.productosNuevos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.productosNuevos img {
+    width: 250px; 
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Special Products Section */
+.productosEspeciales {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.productosEspeciales img {
+    width: 250px; 
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Categories Section */
+.categorias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.primeraCategoria {
+    width: 350px; 
+    height: 250px;
+    background-image: url(Imagenes/Coats\ and\ Jackets.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.segundaCategoria {
+    width: 350px; 
+    height: 250px;
+    background-image: url(Imagenes/Sports\ Jackets.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.terceraCategoria {
+    width: 350px; 
+    height: 250px;
+    background-image: url(Imagenes/Suits\ &\ Blazers.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* footer */
+.pieDePagina {
+    display: grid;
+    grid-template-columns: repeat(3, 15% 18.3% 30%)
+}
