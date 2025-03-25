@@ -488,22 +488,23 @@ p {
     }
 
     /* Sección Menú */
-    .menu {
+     .menu {
         display: grid;
         justify-items: center;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: 210px 70px 70px 70px 70px 70px 70px;
+        grid-template-rows: 70px 70px 70px 70px 70px 70px 210px;
         width: 100%;
-        padding-top: 5px;
+        padding-top: 10px;
     }
 
     .menu h4 {
-        width: 70%;
+        width: 75%;
     }
 
     .imageavatar {
-        order: -1;
+        order: +3;
     }
+
 
 
     /* Sección Información*/
