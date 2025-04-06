@@ -339,6 +339,7 @@ p {
     padding: 12%;
     grid-row: 1;
     grid-column: 1;
+    height: 80%;
 }
 
 .content2 {
@@ -412,7 +413,7 @@ p {
     padding: 12%;
     grid-row: 2;
     grid-column: 3;
-    margin-top: -23px;
+    margin-top: 0px;
 }
 
 .content1 ul li,
