@@ -339,7 +339,7 @@ p {
     padding: 12%;
     grid-row: 1;
     grid-column: 1;
-    height: 80%;
+    height: auto;
 }
 
 .content2 {
@@ -348,7 +348,6 @@ p {
     padding: 12%;
     grid-row: 2;
     grid-column: 1;
-    
 }
 
 .ubication-interests {
@@ -454,10 +453,7 @@ p {
         padding-top: 0%;
     }
 
-    .container {
-        
-    }
-
+   
     /* Sección Encabezado */
     .encabezado {
         background-position: calc(50% - 0%) center;
