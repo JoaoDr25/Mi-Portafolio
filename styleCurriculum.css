@@ -270,7 +270,7 @@ p {
 }
 
 .myresume {
-    height: 150vh;
+    height: 1200px;
 }
 
 .myresume h3 {
@@ -359,9 +359,9 @@ p {
 
 .ubication-interests i {
     width: 90%;
-    aspect-ratio: 1 / 1;
     border: 2px solid rgba(0, 140, 200, 0.9);
     border-radius: 50%;
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -459,11 +459,11 @@ p {
     }
 
     .encabezado h1 {
-        font-size: 9vw;
+        font-size: 12vw;
     }
 
     .encabezado h6 {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .part2 {
@@ -474,7 +474,7 @@ p {
     }
 
     .part2 p {
-        font-size: 2.2vw;
+        font-size: 2.5vw;
         padding-top: 0%;
     }
 
@@ -496,7 +496,7 @@ p {
 
     .menu h4 {
         width: 85%;
-        font-size: 15px;
+        font-size: 4vw;
         margin: 4% 0 0 0;
         padding: 8px;
         height: 60%;
@@ -505,10 +505,10 @@ p {
     .imageavatar {
         align-self: center; 
         order: +3;
-        transform: translateY(28%);
-        width: 40px;
-        height: 40px;
-        margin-bottom: 20%;
+        transform: translateY(25%);
+        width: 80px;
+        height: 80px;
+        margin-bottom: 28%;
     }
 
 
@@ -524,13 +524,13 @@ p {
     }
 
     .textblock h3 {
-        font-size: 4.5vw;
+        font-size: 7vw;
         margin-bottom: 12%;
     }
 
     .textblock p {
-        font-size: 2.5vw;
-        margin-bottom: 22px;
+        font-size: 3vw;
+        margin-bottom: 15px;
     }
 
     .textblock button {
@@ -567,15 +567,15 @@ p {
     }
 
     .myresume h3 {
-        font-size: 4.5vw;
+        font-size: 7vw;
     }
 
     .myresume p {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
 
     .myresume strong {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
 
     .resume {
@@ -588,7 +588,7 @@ p {
 
     .resume h3 {
         padding-bottom: 10%;
-        font-size: 4.5vw;
+        font-size: 6vw;
     }
 
     .content1 {
