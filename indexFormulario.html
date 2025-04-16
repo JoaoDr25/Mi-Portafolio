@@ -1,39 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styleFormulario.css">
   <title>Formulario de Registro</title>
 </head>
+
 <body>
-  <form class="formulario">
+  <form class="formulario" id="formulario" onsubmit="return validarFormulario(event)">
     <h2>REGISTRARSE</h2>
-    <label for="nombre">Nombres</label>
+    <label for="nombres">NOMBRES</label>
     <input type="text" id="nombres" name="nombre" required>
 
-    <label for="nombre">Apellidos</label>
+    <label for="apellidos">APELLIDOS</label>
     <input type="text" id="apellidos" name="apellidos" required>
 
-    <label for="nombre">Género</label>
-    <input type="text" id="genero" name="genero" required>
+    <label for="tipoDocumento">TIPO DE DOCUMENTO</label>
+    <select id="tipoDocumento" name="tipoDocumento" required>
+      <option value="">Seleccionar...</option>
+      <option value="tarjeta">Tarjeta de Identidad</option>
+      <option value="cedula">Cédula de Ciudadania</option>
+      <option value="pasaporte">Pasaporte</option>
+    </select>
 
-    <label for="nombre">Tipo de Documento</label>
-    <input type="text" id="tipoDocumento" name="tipoDocumento" required>
+    <label for="numeroDocumento">NÚMERO DE DOCUMENTO</label>
+    <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" required>
 
-    <label for="nombre">Número de Documento</label>
-    <input type="text" id="numeroDocumento" name="numeroDocumento" required>
+    <label for="numeroTelefono">NÚMERO DE TELEFONO</label>
+    <input type="tel" pattern="[0-9]{10}" id="telefono" name="telefono" required>
 
-    <label for="nombre">Número de Telefono</label>
-    <input type="text" id="telefono" name="telefono" required>
-
-    <label for="email">Correo electrónico</label>
+    <label for="email">EMAIL</label>
     <input type="email" id="email" name="email" required>
 
-    <label for="nombre">Fecha de Nacimiento</label>
-    <input type="text" id="fechaNacimiento" name="fechaNacimiento" required>
+    <label for="FechaNacimiento">FECHA DE NACIMIENTO</label>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
 
-    <button type="submit">Enviar</button>
+    <label for="genero">GÉNERO</label>
+    <select id="genero" name="genero" required>
+      <option value="">Seleccionar...</option>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+      <option value="otro">Otro</option>
+    </select>
+
+    <div id="mensaje-error" style="color: red; display: none;"></div>
+    <div id="mensaje-exito" style="color: rgb(8, 234, 8); display: none;"></div>
+
+    <button type="submit"><strong>ENVIAR</strong></button>
   </form>
+
+  <script>
+//     const registros = [];
+
+//     function validarFormulario(event) {
+//     event.preventDefault();
+
+//     document.getElementById("mensaje-error").style.display = "none";
+//     document.getElementById("mensaje-exito").style.display = "none";
+
+  
+//     let nombres = document.getElementById("nombres").value;
+//     let apellidos = document.getElementById("apellidos").value;
+//     let tipoDocumento = document.getElementById("tipoDocumento").value;
+//     let numeroDocumento = document.getElementById("numeroDocumento").value;
+//     let telefono = document.getElementById("telefono").value;
+//     let email = document.getElementById("email").value;
+//     let fechaNacimiento = document.getElementById("fechaNacimiento").value;
+//     let genero = document.getElementById("genero").value;
+
+  
+//     if (!nombres || !apellidos || !tipoDocumento || !numeroDocumento || !telefono || !email || !fechaNacimiento || !genero) {
+//         mostrarMensaje("error", "Por favor, completa todos los campos.");
+//         return false;
+//     }
+
+   
+//     if (!/^\d{10}$/.test(telefono)) {
+//         mostrarMensaje("error", "El número de teléfono debe tener 10 dígitos.");
+//         return false;
+//     }
+
+   
+//     mostrarMensaje("Formulario enviado correctamente. ¡Gracias por registrarte!");
+//     return true; 
+// }
+
+// function mostrarMensaje(tipo, mensaje) {
+//     let mensajeElemento;
+//     if (tipo === "error") {
+//         mensajeElemento = document.getElementById("mensaje-error");
+//         mensajeElemento.style.display = "block";
+//         mensajeElemento.textContent = mensaje;
+//     } else if (tipo === "exito") {
+//         mensajeElemento = document.getElementById('mensaje-exito');
+//         mensajeElemento.style.display = 'block';
+//         mensajeElemento.textContent = mensaje;
+//     }
+// }
+
+// const nuevoRegistro = {
+//   nombres: document.getElementById("nombres").value,
+//   apellidos: document.getElementById("apellidos").value,
+//   tipoDocumento: document.getElementById("tipoDocumento").value,
+//   numeroDocumento: document.getElementById("numeroDocumento").value,
+//   telefono: document.getElementById("telefono").value,
+//   email: document.getElementById("email").value,
+//   fechaNacimiento: document.getElementById("fechaNacimiento").value,
+//   genero: document.getElementById("genero").value
+// };
+
+//   registros.push(nuevoRegistro);
+
+//   console.log("Registros actuales:", registros);
+
+const formulario = document.querySelector(".formulario");
+const registros = [];
+
+formulario.addEventListener("submit", function (e) {
+  e.preventDefault(); // Evita que la página se recargue
+
+  // Obtenemos los valores ingresados en el formulario
+  const nuevoRegistro = {
+    nombres: document.getElementById("nombres").value.trim(),
+    apellidos: document.getElementById("apellidos").value.trim(),
+    tipoDocumento: document.getElementById("tipoDocumento").value,
+    numeroDocumento: document.getElementById("numeroDocumento").value.trim(),
+    telefono: document.getElementById("telefono").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    fechaNacimiento: document.getElementById("fechaNacimiento").value,
+    genero: document.getElementById("genero").value
+  };
+
+  // Validación: Verificar si algún campo está vacío
+  const hayCamposVacios = Object.values(nuevoRegistro).some(valor => valor === "");
+
+  if (hayCamposVacios) {
+    mostrarMensaje("error", "Por favor, completa todos los campos.");
+    return;
+  }
+
+  // Guardamos el registro en el array
+  registros.push(nuevoRegistro);
+
+  // Mostramos los datos en consola
+  console.log("Registros actuales:");
+  console.log(registros);
+
+  // Mostrar mensaje de éxito
+  mostrarMensaje("exito", "Formulario enviado correctamente. ¡Gracias por registrarte!");
+
+  // (Opcional) Resetear formulario
+  formulario.reset();
+});
+
+// Función para mostrar mensajes
+function mostrarMensaje(tipo, mensaje) {
+  const mensajeExito = document.getElementById("mensaje-exito");
+  const mensajeError = document.getElementById("mensaje-error");
+
+  if (tipo === "exito") {
+    mensajeExito.textContent = mensaje;
+    mensajeExito.style.display = "block";
+    mensajeError.style.display = "none";
+  } else {
+    mensajeError.textContent = mensaje;
+    mensajeError.style.display = "block";
+    mensajeExito.style.display = "none";
+  }
+}
+  </script>
 </body>
+
 </html>

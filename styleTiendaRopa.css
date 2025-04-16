@@ -125,7 +125,7 @@ body {
 .primerBanner {
     width: 68%;
     height: 90%;
-    background-image: url(Imagenes/Modelo\ Principal\ Sin\ Fondo.png);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Modelo%20Principal%20Sin%20Fondo.png?v=1744223345988');
     background-color: #555148;
     background-size: contain;
     background-size: 60%;
@@ -147,7 +147,7 @@ body {
 }
 
 .segundoBanner {
-    background-image: url(Imagenes/New\ Arrivals.avif);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/New%20Arrivals.avif?v=1743400822450');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -171,7 +171,7 @@ body {
 }
 
 .tercerBanner {
-    background-image: url(Imagenes/Big\ Clearance.avif);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Big%20Clearance.avif?v=1743400824742');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -390,7 +390,7 @@ body {
     justify-content: space-between;
     width: 96%;
     height: 80%;
-    background-image: url(Imagenes/Coats\ and\ Jackets.webp);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Coats%20and%20Jackets.webp?v=1743400882815');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -412,7 +412,7 @@ body {
     justify-content: space-between;
     width: 96%;
     height: 80%;
-    background-image: url(Imagenes/Sports\ Jackets.webp);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Sports%20Jackets.webp?v=1743400879947');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -434,7 +434,7 @@ body {
     justify-content: space-between;
     width: 96%;
     height: 80%;
-    background-image: url(Imagenes/Suits\ &\ Blazers.jpg);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Suits%20%26%20Blazers.jpg?v=1743400888070');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
