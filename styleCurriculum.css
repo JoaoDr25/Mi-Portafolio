@@ -460,7 +460,7 @@ p {
     }
 
     .encabezado h1 {
-        font-size: 12vw;
+        font-size: 10.5vw;
     }
 
     .encabezado h6 {
@@ -530,13 +530,14 @@ p {
     }
 
     .textblock p {
-        font-size: 3vw;
-        margin-bottom: 15px;
+        font-size: 3.5vw;
+        margin-bottom: 5px;
     }
 
     .textblock button {
         font-size: 100%;
         padding: 5%;
+        margin-top: 40px;
     }
 
     .block1 .block2 .block3 {
@@ -552,7 +553,6 @@ p {
 
     .iconos1 i {
         font-size: 6vw;
-        padding-bottom: 20px;
     }
 
 
@@ -573,11 +573,11 @@ p {
     }
 
     .myresume p {
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
 
     .myresume strong {
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
 
     .resume {
@@ -590,7 +590,6 @@ p {
 
     .resume h3 {
         padding-bottom: 10%;
-        font-size: 6vw;
     }
 
     .content1 {
@@ -617,6 +616,10 @@ p {
 
     .ubication-interests i {
         font-size: 4vw;
+    }
+
+    .ubication-interests p {
+        font-size: 14px;
     }
 }
 
