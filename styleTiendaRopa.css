@@ -1,10 +1,9 @@
 body {
     display: grid;
     grid-template-rows: repeat(7, auto);
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 60px;
+    padding-right: 60px;
     background-color: #F5F5F5;
-    width: 100%;
 }
 
 
@@ -21,9 +20,9 @@ body {
 }
 
 .titulo1 h1 {
-    margin-bottom: 0%;
-    margin-top: 15%;
-    font-size: 3.5rem;
+    margin-bottom: 0px;
+    margin-top: 60px;
+    font-size: 3.6rem;
 }
 
 .titulo1 span {
@@ -34,17 +33,28 @@ body {
 }
 
 .titulo2 p {
-    margin-top: 0%;
-    padding-left: 1%;
+    margin-top: 0px;
+    padding-left: 4px;
     font-size: 0.9rem;
     color: rgb(82, 81, 81);
+}
+
+.cart input {
+    height: 22px;
+    width: 200px;
 }
 
 .cart {
     display: flex;
     align-items: center;
-    padding-top: 18%;
-    gap: 20px;
+    padding-top: 70px;
+}
+
+.cart button {
+    padding: 5px;
+    background-color: #F5F5F5;
+    border-color: white;
+    cursor: pointer;
 }
 
 .cart p {
@@ -54,11 +64,16 @@ body {
     cursor: pointer;
     font-size: 1.05vw;
     transition: transform 0.2s ease-in-out;
+    margin-left: 20px;
 }
 
 .cart p:active {
     transform: scale(0.9);
     box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.iconsCart i {
+    padding: 0 5px 0 5px;
 }
 
 
@@ -67,9 +82,9 @@ body {
     display: flex;
     justify-content: start;
     background-color: white;
-    padding-left: 1.5%;
+    padding-left: 34px;
     border-bottom: 3px solid #F5F5F5;
-    padding-top: 0%;
+    padding-top: 0px;
     padding-bottom: 0%;
     height: 95%;
 }
@@ -79,11 +94,11 @@ body {
 }
 
 .menu h4 {
-    padding: 0.8% 0.4%;
+    padding: 10px;
     font-size: 1.09rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
-    margin: 0.5%;
+    margin: 6px 0 6px 0;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -101,11 +116,11 @@ body {
 /* Principal Banner */
 .banners {
     display: flex;
-    padding: 4% 2.5% 0 2.5%;
+    padding: 0 35px 0 35px;
     background-color: white;
-    height: 74vh;
+    height: 75vh;
     gap: 0.9%;
-    padding-top: 1%;
+    padding-top: 30px;
 }
 
 .banners h1 {
@@ -128,7 +143,7 @@ body {
     background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Modelo%20Principal%20Sin%20Fondo.png?v=1744223345988');
     background-color: #555148;
     background-size: contain;
-    background-size: 60%;
+    background-size: 55%;
     background-repeat: no-repeat;
     background-position: right top;
     border: 2px solid black;
@@ -142,15 +157,21 @@ body {
 }
 
 .primerBanner h1 {
-    padding-left: 10%;
-    padding-top: 24vh;
+    padding-left: 14%;
+    padding-top: 22vh;
+    font-size: 2.5rem;
+}
+
+.primerBanner span {
+    font-size: 4rem;
 }
 
 .segundoBanner {
     background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/New%20Arrivals.avif?v=1743400822450');
-    background-size: contain;
+    background-size: 115%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: top right;
+    background-color: #edebec;
     height: 48%;
     display: flex;
     flex-direction: column;
@@ -170,11 +191,16 @@ body {
     color: black;
 }
 
+.segundoBanner p {
+    width: 58%;
+}
+
 .tercerBanner {
-    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Big%20Clearance.avif?v=1743400824742');
-    background-size: contain;
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Big%20Clearance%20sin%20Fondo.png?v=1745285496751');
+    background-size: 90%;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: top left;
+    background-color: #626053;
     height: 48%;
     display: flex;
     flex-direction: column;
@@ -206,7 +232,7 @@ body {
 }
 
 .separateBanners h1 {
-    margin-top: 0%;
+    margin-top: 0px;
     padding-top: 5%;
     display: flex;
     flex-direction: column;
@@ -220,12 +246,12 @@ body {
 /* New Products Section */
 .newProductsSection {
     background-color: white;
-    margin-top: 0%;
+    margin-top: 0px;
 }
 
 .newProductsSection h4 {
     font-size: 1.5rem;
-    margin: 0 0 2% 2.6%;
+    margin: 0 0 30px 34px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -234,8 +260,8 @@ body {
     flex-direction: column;
     text-align: center;
     grid-template-columns: repeat(4, 1fr);
-    width: 95%;
-    gap: 4%;
+    width: 94.2%;
+    gap: 35px;
     margin: 0 auto;
     height: fit-content;
 }
@@ -243,14 +269,24 @@ body {
 .productosNuevos img {
     width: 100%;
     height: 70%;
-    box-shadow: 0 0 0 3px #F5F5F5;
+    background-color: #F7F7F7
+}
+
+.productosNuevos img:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.productosNuevos img:active {
+    transform: scale(0.99);
 }
 
 .productosNuevos h4 {
-    padding-left: 0%;
+    padding-left: 0px;
     margin: 10px 0 10px 0;
     font-weight: 100;
-    font-size: 1.25rem;
+    font-size: 1.10rem;
     opacity: 0.8;
 }
 
@@ -273,7 +309,7 @@ body {
 .productosNuevos button {
     background-color: black;
     color: white;
-    padding: 6px;
+    padding: 7px;
     font-family:sans-serif;
     cursor: pointer;
 }
@@ -293,12 +329,14 @@ body {
 /* Special Products Section */
 .specialProductsSection {
     background-color: white;
+    margin-top: 0px;
 }
 
 .specialProductsSection h4 {
     font-size: 1.5rem;
-    margin: 2.5% 0 2% 2.6%;
+    margin: 20px 0 30px 34px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-top: 10px;
 }
 
 .productosEspeciales {
@@ -307,22 +345,32 @@ body {
     text-align: center;
     grid-template-columns: repeat(4, 1fr);
     width: 95%;
-    gap: 4%;
+    gap: 35px;
     margin: 0 auto;
     height: fit-content;
 }
 
 .productosEspeciales img {
     width: 100%;
-    height: 70%;
-    box-shadow: 0 0 0 2px #F5F5F5;
+    height: 65%;
+    background-color: #F7F7F7
+}
+
+.productosEspeciales img:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.productosEspeciales img:active {
+    transform: scale(0.99);
 }
 
 .productosEspeciales h4 {
     padding-left: 0%;
     margin: 10px 0 10px 0;
     font-weight: 100;
-    font-size: 1.25rem;
+    font-size: 1.10rem;
     opacity: 0.8;
 }
 
@@ -345,7 +393,7 @@ body {
 .productosEspeciales button {
     background-color: black;
     color: white;
-    padding: 6px;
+    padding: 7px;
     font-family:sans-serif;
     cursor: pointer;
 }
@@ -368,7 +416,6 @@ body {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     padding-top: 40px;
-    background-color: white;
     padding-left: 25px;
     padding-right: 25px;
     height: 40vh;
@@ -376,24 +423,39 @@ body {
 }
 
 .categorias h1 {
+    font-size: 3rem;
+    padding-left: 33px;
+    margin-top: 10px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 340;
+}
+
+.categorias span {
     font-size: 2rem;
-    padding-left: 8%;
+    display: block;
+    line-height: 0.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .categorias p {
-    font-size: 0.9rem;
-    padding-left: 8%;
+    font-size: 0.8rem;
+    padding-left: 33px;
+    padding-bottom: 10px;
+    color: white;
 }
 
 .primeraCategoria {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 96%;
     height: 80%;
     background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Coats%20and%20Jackets.webp?v=1743400882815');
-    background-size: contain;
+    background-size: 55%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: top right;
+    background-color: #e2e6e9;
     border: 2px solid black;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -408,14 +470,16 @@ body {
 }
 
 .segundaCategoria {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 96%;
     height: 80%;
     background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Sports%20Jackets.webp?v=1743400879947');
-    background-size: contain;
+    background-size: 55%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: top right;
+    background-color: #aba29b;
     border: 2px solid black;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -430,14 +494,16 @@ body {
 }
 
 .terceraCategoria {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 96%;
     height: 80%;
-    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Suits%20%26%20Blazers.jpg?v=1743400888070');
-    background-size: contain;
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Suits%20%26%20Blazers%20sin%20Fondo.png?v=1745290022392');
+    background-size: 60%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: top right;
+    background-color: #46454a;
     border: 2px solid black;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -455,17 +521,17 @@ body {
 /* footer */
 .pieDePagina {
     display: grid;
-    grid-template-columns: repeat(3, 16% 20% 25%);
+    grid-template-columns: 15% 18% 24% auto;
     background-color: white;
-    padding-left: 3%;
+    padding-left: 38px;
 }
 
 .pieDePagina h4 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .pieDePagina p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     cursor: pointer;
 }
 
@@ -473,13 +539,15 @@ body {
     transform: scale(1.05);
 }
 
-.contacts {
-    width: 170%
-}
-
 .contacts b {
     font-size: 1.2rem
 }
+
+.contacts i {
+    padding-right: 5px;
+    font-size: 18px;
+}
+
 
 
 /* ----------------------------------------------------------------------------------------- */
@@ -491,8 +559,7 @@ body {
 @media (max-width: 768px) {
     body {
         display: grid;
-        grid-template-rows: repeat(7, auto auto auto auto auto auto auto);
-        width: 100%;
+        grid-template-rows: auto auto auto auto auto auto auto;
         margin: 0%;
         padding-left: 0px;
         padding-right: 0px;
@@ -507,26 +574,30 @@ body {
     }
 
     .titulo1 h1 {
-        margin-top: 10%;
+        margin: 50px 0 0 50px;
+        font-size: 5.7rem;
     }
 
-    .parte2 {
-        padding-top: 0px;
-        width: 100%;
+    .titulo2 p {
+        margin: 0px 50px;
+        font-size: 1.5rem;
     }
 
     .cart {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 0px;
-        width: 95%;
-        gap: 0px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 50px;
     }
 
     .cart p {
-        font-size: 4vw;
+       font-size: 20px;
+    }
+
+    .cart input {
+        width: 40%;
+        height: 25px;
+    }
+
+    .cart button {
+        padding: 6.4px;
     }
 
 
@@ -535,12 +606,11 @@ body {
         display: none;
         flex-direction: column;
         position: absolute;
-        margin: 0%;
     }
 
     .menu-toggle {
         display: block;
-        height: 35px;
+        height: 50px;
         width: 99.5%;
         padding: 0%;
     }
@@ -551,14 +621,14 @@ body {
         display: flex;
         flex-direction: column;
         width: 99%;
-        height: 400px;
+        height: auto;
         padding: 0%;
         gap: 0%;
     }
 
     .primerBanner {
         width: 100%;
-        height: 100%;
+        height: 40vh;
         border: 0%;
     }
 
@@ -572,19 +642,18 @@ body {
 
     .segundoBanner {
         width: 100%;
-        height: 200px;
+        height: 40vh;
         border: 0%;
     }
 
     .tercerBanner {
         width: 100%;
-        height: 200px;
+        height: 40vh;
         border: 0%;
     }
 
     .separateBanners {
-        width: 100%;
-        height: 97%;
+        width: 91%;
         gap: 0%;
     }
 
@@ -681,5 +750,9 @@ body {
     
     .pieDePagina p {
         font-size: 40%;
+    }
+
+    .contacts i {
+        font-size: 10px;
     }
 }

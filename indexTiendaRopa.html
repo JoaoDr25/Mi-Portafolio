@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleTiendaRopa.css">
     <title>Tienda de Ropa</title>
@@ -28,8 +29,13 @@
             </div>
             <div class="cart">
                 <input type="text" name="buscar" id="buscar">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p>Shopping Cart: $0.00</p>
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                <p class="iconsCart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Shopping Cart: $0.00
+                    <i class="fa-solid fa-circle-plus"></i>
+                </p>
             </div>
         </div>
     </div>
@@ -72,33 +78,37 @@
         <h4 class>New Products</h4>
 
         <div class="productosNuevos">
-                <div>
-                    <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Sueter%20Gris%2001.webp?v=1743400829675" alt="Imagen de Sueter Gris">
-                    <p><strong>Loose casual sweater with modern style</strong></p>
-                    <h4>$159.99</h4>
-                    <button><strong>Add to Cart</strong></button>
-                </div>
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Sueter%20Gris%2001.png?v=1745291243922"
+                    alt="Imagen de Sueter Gris">
+                <p><strong>Loose casual sweater with modern style</strong></p>
+                <h4>$159.99</h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
 
-                <div>
-                    <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Saco%20Caf%C3%A9%20Oscuro%2002.webp?v=1743400836394" alt="Imagen de Saco Café Oscuro">
-                    <p><strong>Everyday wear combined for a casual-smart look</strong></p>
-                    <h4>$169.99</h4>
-                    <button><strong>Add to Cart</strong></button>
-                </div>
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Camisa%20Manga%20Larga%20Azul%2004.png?v=1745290947488"
+                    alt="Imagen de Camisa Manga Larga Azul">
+                <p><strong>Slim-fit blue shirt with button details</strong></p>
+                <h4>$169.99</h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
 
-                <div>
-                    <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Bufanda%20Lana%20Oscura%2003.jpg?v=1743400839708" alt="Imagen de Bufanda Lana Oscura">
-                    <p><strong>Fashionable checkered jacket with scarf</strong></p>
-                    <h4>$199.99</h4>
-                    <button><strong>Add to Cart</strong></button>
-                </div>
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Saco%20Caf%C3%A9%20Oscuro%2002.png?v=1745299659785"
+                    alt="Imagen de Saco Café Oscuro">
+                <p><strong>Everyday wear a casual-smart look</strong></p>
+                <h4>$199.99</h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
 
-                <div>
-                    <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Camisa%20Manga%20Larga%20Azul%2004.jpg?v=1743400844948" alt="Imagen de Camisa Manga Larga Azul">
-                    <p><strong>Slim-fit grey shirt with button details</strong></p>
-                    <h4>$129.99</h4>
-                    <button><strong>Add to Cart</strong></button>
-                </div>
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/CamiBuzo%20Gris%2005.png?v=1745296561167"
+                    alt="Imagen de Camibuzo Gris">
+                <p><strong>Cozy & stylish sweater, perfect for fall</strong></p>
+                <h4>$129.99</h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
 
         </div>
     </div>
@@ -109,31 +119,35 @@
 
         <div class="productosEspeciales">
             <div>
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/CamiBuzo%20Gris%2005.webp?v=1743400851608" alt="Imagen de Camibuzo Gris">
-                <p><strong>Cozy & stylish sweater, perfect for fall</strong></p>
-                <h4>$129.99 <span><s>159.99</s></span></h4>
-                <button><strong>Add to Cart</strong></button>
-            </div>
-
-            <div>
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Saco%20Gris%20Elegante%2006.webp?v=1743400856546" alt="Imagen de Saco Gris Elegante">
-                <p><strong>Luxury slim-fit suit for a modern look</strong></p>
-                <h4>$129.99 <span><s>159.99</s></span></h4>
-                <button><strong>Add to Cart</strong></button>
-            </div>
-
-            <div>
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Camisa%20Manga%20Larga%20Gris%2007.webp?v=1743400859489" alt="Imagen de Camisa Manga Larga Gris">
-                <p><strong>Minimalist design shirt with fine details</strong></p>
-                <h4>$129.99 <span><s>159.99</s></span></h4>
-                <button><strong>Add to Cart</strong></button>
-            </div>
-
-            <div>
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Buzo%20Oscuro%2008.webp?v=1743400864144" alt="Imagen de Buzo Oscuro">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Buzo%20Oscuro%2008.png?v=1745299163405"
+                    alt="Imagen de Buzo Oscuro">
                 <p><strong>Warm zip-up sweater for a casual day</strong></p>
                 <h4>$129.99 <span><s>159.99</s></span></h4>
-                <button><strong>Add to Cart</strong></button>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
+
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Bufanda%20Lana%20Oscura%2003..png?v=1745290246962"
+                    alt="Imagen de Bufanda Lana Oscura">
+                <p><strong>Fashionable checkered jacket with scarf</strong></p>
+                <h4>$129.99 <span><s>159.99</s></span></h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
+
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Camisa%20Manga%20Larga%20Cafe%2007.png?v=1745298858531"
+                    alt="Imagen de Abrigo Manga Larga Cafe">
+                <p><strong>Minimalist design rugged ridge with fine details</strong></p>
+                <h4>$129.99 <span><s>159.99</s></span></h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
+            </div>
+
+            <div>
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/Saco%20Gris%20Elegante%2006.png?v=1745296681411"
+                    alt="Imagen de Saco Gris Elegante">
+                <p><strong>Luxury slim-fit suit for a modern look</strong></p>
+                <h4>$129.99 <span><s>159.99</s></span></h4>
+                <button><i class="fa-solid fa-plus"></i><strong> Add to Cart</strong></button>
             </div>
 
         </div>
@@ -143,17 +157,17 @@
     <div class="categorias">
 
         <div class="primeraCategoria">
-            <h1>Coats & Jackets</h1>
+            <h1>Coats <span>& Jackets</span></h1>
             <p>Stay warm and stylish with our premium outerwear collection</p>
         </div>
 
         <div class="segundaCategoria">
-            <h1>Sports Jackets</h1>
+            <h1>Sports <span>Jackets</span></h1>
             <p>Perfect balance between casual and formal for any occasion</p>
         </div>
 
         <div class="terceraCategoria">
-            <h1>Suits & Blazers</h1>
+            <h1>Suits <span>& Blazers</span></h1>
             <p>Elegance redefined. Classic and modern suit options</p>
         </div>
 
@@ -164,7 +178,7 @@
 
         <div class="information">
             <h4>Information</h4>
-            <p>About us</p>
+            <p><strong>About us</strong></p>
             <p>Why Choose Us?</p>
             <p>Shipping & Returns</p>
             <p>Secure Payment</p>
@@ -193,9 +207,18 @@
 
         <div class="contacts">
             <h4>Contacts</h4>
-            <p>Example Street, City, Main Road, Office 202, USA</p>
-            <p>Call our support team at <b>(800) 234-6789</b></p>
-        </div>
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Example Street, City, Main Road, Office 202, USA
+            </p>
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                Call our support team at <b>(800) 234-6789</b>
+            </p>
+            <i class="fa-brands fa-facebook-f" style="color: #b7b9bd; font-size: 22px;"></i>
+            <i class="fa-brands fa-twitter" style="color: #b7b9bd; font-size: 22px;"></i>
+            <i class="fa-brands fa-tiktok" style="color: #b7b9bd; font-size: 22px;"></i>
+    </div>
 
     </div>
 </body>
