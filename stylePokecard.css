@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    background-image: url(pokemon-fondo.jpg);
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/pokemon-fondo.jpg?v=1746642352160');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
