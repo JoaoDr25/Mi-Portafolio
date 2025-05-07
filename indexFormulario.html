@@ -176,7 +176,7 @@ function editarRegistro(boton) {
   mostrarMensaje("exito","Modifica los datos y vuelve a enviar el formulario.")
 }
 
-// mostrar modal personalizado
+
 function mostrarModalError(mensaje) {
   const modal = document.getElementById("modal-error");
   const textoError = document.getElementById("texto-error");
@@ -187,11 +187,8 @@ function mostrarModalError(mensaje) {
 function cerrarModal() {
   document.getElementById("modal-error").style.display = "none";
 }
-
-
   </script>
 
-  <!-- Modal de error personalizado -->
 <div id="modal-error" class="modal">
   <div class="modal-contenido">
     <span class="cerrar" onclick="cerrarModal()">&times;</span>
