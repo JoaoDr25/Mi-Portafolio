@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylePokecard.css">
+    <title>Tarjeta de Pokémon</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="tarjeta">
+        <div class="header">
+
+            <div class="pokemon">
+                <h1 id="pokemonNombre">Nombre</h1>
+                <p id="pokemonNumero"></p>
+            </div>
+
+        </div>
+        <div class="pokemonImagen">
+            <img id="imagenPokemon" src="" alt="Imagen del Pokémon">
+        </div>
+        <div class="informacion">
+            <div class="bloqueInformacion tipoContenido" id="tipos">
+                <strong>Tipo:</strong>
+            </div>
+            <div class="bloqueInformacion" id="habilidades">
+                <strong>Habilidades:</strong>
+            </div>
+            <div class="bloqueInformacion" id="altura">
+                <strong>Altura:</strong>
+            </div>
+            <div class="bloqueInformacion" id="peso">
+                <strong>Peso:</strong>
+            </div>
+        </div>
+        <div class="bloqueInformacion estadisticas">
+            <strong>Estadísticas:</strong>
+
+            <div class="barraEstadistica">
+                <label>HP</label>
+                <div class="barraFondo">
+                    <div id="hp" class="barraRelleno"></div>
+                </div>
+            </div>
+
+            <div class="barraEstadistica">
+                <label>Ataque</label>
+                <div class="barraFondo">
+                    <div id="ataque" class="barraRelleno"></div>
+                </div>
+            </div>
+
+            <div class="barraEstadistica">
+                <label>Defensa</label>
+                <div class="barraFondo">
+                    <div id="defensa" class="barraRelleno"></div>
+                </div>
+            </div>
+
+            <div class="barraEstadistica">
+                <label>Ataque Especial</label>
+                <div class="barraFondo">
+                    <div id="ataqueEspecial" class="barraRelleno"></div>
+                </div>
+            </div>
+
+            <div class="barraEstadistica">
+                <label>Defensa Especial</label>
+                <div class="barraFondo">
+                    <div id="defensaEspecial" class="barraRelleno"></div>
+                </div>
+            </div>
+
+            <div class="barraEstadistica">
+                <label>Velocidad</label>
+                <div class="barraFondo">
+                    <div id="velocidad" class="barraRelleno"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let actualId = 1;
+
+        function capitalizar(texto) {
+            return texto.charAt(0).toUpperCase() + texto.slice(1);
+        }
+
+        const coloresTipos = {
+            Planta: '#78C850',
+            Fuego: '#C03028',
+            Agua: '#6890F0',
+            Eléctrico: '#F8D030',
+            Hielo: '#98D8D8',
+            Lucha: '#F08030',
+            Veneno: '#A040A0',
+            Tierra: '#E0C068',
+            Volador: '#A890F0',
+            Psíquico: '#F85888',
+            Bicho: '#A8B820',
+            Roca: '#B8A038',
+            Fantasma: '#705898',
+            Siniestro: '#705848',
+            Dragón: '#7038F8',
+            Acero: '#B8B8D0',
+            Hada: '#EE99AC',
+            Normal: '#A8A878'
+        };
+
+
+        async function cargarPokemon(id) {
+            try {
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                const data = res.data;
+                actualId = data.id;
+
+                document.getElementById("pokemonNombre").textContent = capitalizar(data.name);
+                document.getElementById("pokemonNumero").textContent = `#${data.id.toString().padStart(3, '0')}`;
+                document.getElementById("imagenPokemon").src = data.sprites.front_default;
+
+
+                const tipoDiv = document.getElementById("tipos");
+                const tarjeta = document.querySelector(".tarjeta");
+                tipoDiv.innerHTML = '<strong>Tipo: </strong><br>';
+
+                const tiposTraducidos = await Promise.all(
+                    data.types.map(async (t) => {
+                        const res = await axios.get(t.type.url);
+                        const datosTipo = res.data;
+                        const nombreEs = datosTipo.names.find(n => n.language.name === 'es');
+                        return capitalizar(nombreEs ? nombreEs.name : t.type.name);
+                    })
+                );
+
+                if (tiposTraducidos.length === 1) {
+                    const tipo = tiposTraducidos[0];
+                    tarjeta.style.background = coloresTipos[tipo] || 'rgba(255, 255, 255, 0.8)';
+                } else if (tiposTraducidos.length === 2) {
+                    const [tipo1, tipo2] = tiposTraducidos;
+                    const color1 = coloresTipos[tipo1] || '#fff';
+                    const color2 = coloresTipos[tipo2] || '#fff';
+                    tarjeta.style.background = `linear-gradient(to right, ${color1}, ${color2})`;
+                }
+
+
+                tiposTraducidos.forEach(tipo => {
+                    const span = document.createElement('span');
+                    span.textContent = tipo
+                    tipoDiv.appendChild(span);
+                });
+
+
+                const habilidad = data.abilities.map(async (h) => {
+                    const res = await axios.get(h.ability.url);
+                    const datosHabilidad = res.data;
+                    const nombreEs = datosHabilidad.names.find(n => n.language.name === 'es');
+                    return capitalizar(nombreEs ? nombreEs.name : h.ability.name);
+                });
+                const habilidades = await Promise.all(habilidad);
+                document.getElementById("habilidades").innerHTML = `<strong>Habilidades:</strong><br>${habilidades.join(', ')}`;
+                document.getElementById("altura").innerHTML = `<strong>Altura:</strong><br>${data.height / 10} m`;
+                document.getElementById("peso").innerHTML = `<strong>Peso:</strong><br>${data.weight / 10} kg`;
+
+
+                const estadisticas = data.stats.map(s => s.base_stat);
+                document.getElementById("hp").style.width = `${(estadisticas[0] / 100) * 100}%`;
+                document.getElementById("ataque").style.width = `${(estadisticas[1] / 100) * 100}%`;
+                document.getElementById("defensa").style.width = `${(estadisticas[2] / 100) * 100}%`;
+                document.getElementById("ataqueEspecial").style.width = `${(estadisticas[3] / 100) * 100}%`;
+                document.getElementById("defensaEspecial").style.width = `${(estadisticas[4] / 100) * 100}%`;
+                document.getElementById("velocidad").style.width = `${(estadisticas[5] / 100) * 100}%`;
+
+
+            } catch (error) {
+                console.error("Error al cargar el Pokémon:", error);
+            }
+        }
+
+        function cambiarPokemon(cambio) {
+            let nuevoId = actualId + cambio;
+            if (nuevoId < 1) nuevoId = 1;
+            if (nuevoId > 1010) nuevoId = 1010;
+            cargarPokemon(nuevoId);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const random = Math.floor(Math.random() * 300) + 1;
+            cargarPokemon(random);
+        });
+    </script>
+</body>
+
+</html>

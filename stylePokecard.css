@@ -1,0 +1,145 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-image: url(pokemon-fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.tarjeta {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    height: 90%;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.tarjeta:hover {
+    transform: scale(1.0005);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.tarjeta::before {
+    transition: left 0.5s ease-in-out;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon p {
+    margin-top: 0;
+}
+
+#imagenPokemon {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.pokemonImagen {
+    text-align: center;
+    transition: left 0.5s ease-in-out;
+    border: 1px solid black;
+}
+
+.pokemonImagen:hover {
+    transform: scale(1.05);
+}
+
+.pokemonImagen img {
+    width: 200px;
+    height: 200px;
+}
+
+.informacion {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.bloqueInformacion {
+    width: 45%;
+    margin-bottom: 15px;
+}
+
+.tipoContenido span {
+    padding: 5px 2px;
+    border-radius: 10px;
+    color: black;
+    margin-right: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.estadisticas p {
+    margin: 5px 0;
+}
+
+.barraEstadistica {
+    margin-bottom: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.barraEstadistica label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.barraFondo {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    height: 16px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.barraRelleno {
+    background-color: #4caf50;
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.controls button {
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
