@@ -9,16 +9,18 @@
 </head>
 
 <body>
-  <form class="formulario" id="formulario" onsubmit="return validarFormulario(event)">
+<div class="bodyFormulario">
+
+  <form class="formulario" id="formulario">
     <h2>REGISTRARSE</h2>
     <label for="nombres">NOMBRES</label>
-    <input type="text" id="nombres" name="nombre" required>
+    <input type="text" id="nombres" name="nombre" >
 
     <label for="apellidos">APELLIDOS</label>
-    <input type="text" id="apellidos" name="apellidos" required>
+    <input type="text" id="apellidos" name="apellidos" >
 
     <label for="tipoDocumento">TIPO DE DOCUMENTO</label>
-    <select id="tipoDocumento" name="tipoDocumento" required>
+    <select id="tipoDocumento" name="tipoDocumento" >
       <option value="">Seleccionar...</option>
       <option value="tarjeta">Tarjeta de Identidad</option>
       <option value="cedula">Cédula de Ciudadania</option>
@@ -26,19 +28,19 @@
     </select>
 
     <label for="numeroDocumento">NÚMERO DE DOCUMENTO</label>
-    <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" required>
+    <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" >
 
     <label for="numeroTelefono">NÚMERO DE TELEFONO</label>
-    <input type="tel" pattern="[0-9]{10}" id="telefono" name="telefono" required>
+    <input type="tel" pattern="[0-9]{10}" id="telefono" name="telefono" >
 
     <label for="email">EMAIL</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" >
 
     <label for="FechaNacimiento">FECHA DE NACIMIENTO</label>
-    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" >
 
     <label for="genero">GÉNERO</label>
-    <select id="genero" name="genero" required>
+    <select id="genero" name="genero" >
       <option value="">Seleccionar...</option>
       <option value="masculino">Masculino</option>
       <option value="femenino">Femenino</option>
@@ -51,78 +53,42 @@
     <button type="submit"><strong>ENVIAR</strong></button>
   </form>
 
+
+<div id="contenedorTabla" style="margin-top: 20px;">
+  <table border="1" id="tabla-registros" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Tipo Documento</th>
+        <th>Número Documento</th>
+        <th>Telefono</th>
+        <th>Email</th>
+        <th>Fecha Nacimiento</th>
+        <th>Género</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+   
+    </tbody>
+  </table>
+</div>
+
+</div>
+
   <script>
-//     const registros = [];
 
-//     function validarFormulario(event) {
-//     event.preventDefault();
-
-//     document.getElementById("mensaje-error").style.display = "none";
-//     document.getElementById("mensaje-exito").style.display = "none";
-
-  
-//     let nombres = document.getElementById("nombres").value;
-//     let apellidos = document.getElementById("apellidos").value;
-//     let tipoDocumento = document.getElementById("tipoDocumento").value;
-//     let numeroDocumento = document.getElementById("numeroDocumento").value;
-//     let telefono = document.getElementById("telefono").value;
-//     let email = document.getElementById("email").value;
-//     let fechaNacimiento = document.getElementById("fechaNacimiento").value;
-//     let genero = document.getElementById("genero").value;
-
-  
-//     if (!nombres || !apellidos || !tipoDocumento || !numeroDocumento || !telefono || !email || !fechaNacimiento || !genero) {
-//         mostrarMensaje("error", "Por favor, completa todos los campos.");
-//         return false;
-//     }
-
-   
-//     if (!/^\d{10}$/.test(telefono)) {
-//         mostrarMensaje("error", "El número de teléfono debe tener 10 dígitos.");
-//         return false;
-//     }
-
-   
-//     mostrarMensaje("Formulario enviado correctamente. ¡Gracias por registrarte!");
-//     return true; 
-// }
-
-// function mostrarMensaje(tipo, mensaje) {
-//     let mensajeElemento;
-//     if (tipo === "error") {
-//         mensajeElemento = document.getElementById("mensaje-error");
-//         mensajeElemento.style.display = "block";
-//         mensajeElemento.textContent = mensaje;
-//     } else if (tipo === "exito") {
-//         mensajeElemento = document.getElementById('mensaje-exito');
-//         mensajeElemento.style.display = 'block';
-//         mensajeElemento.textContent = mensaje;
-//     }
-// }
-
-// const nuevoRegistro = {
-//   nombres: document.getElementById("nombres").value,
-//   apellidos: document.getElementById("apellidos").value,
-//   tipoDocumento: document.getElementById("tipoDocumento").value,
-//   numeroDocumento: document.getElementById("numeroDocumento").value,
-//   telefono: document.getElementById("telefono").value,
-//   email: document.getElementById("email").value,
-//   fechaNacimiento: document.getElementById("fechaNacimiento").value,
-//   genero: document.getElementById("genero").value
-// };
-
-//   registros.push(nuevoRegistro);
-
-//   console.log("Registros actuales:", registros);
-
-const formulario = document.querySelector(".formulario");
+const formulario = document.querySelector("#formulario");
 const registros = [];
 
 formulario.addEventListener("submit", function (e) {
-  e.preventDefault(); // Evita que la página se recargue
+  e.preventDefault(); 
 
-  // Obtenemos los valores ingresados en el formulario
   const nuevoRegistro = {
+    item: registros.length + 1,
     nombres: document.getElementById("nombres").value.trim(),
     apellidos: document.getElementById("apellidos").value.trim(),
     tipoDocumento: document.getElementById("tipoDocumento").value,
@@ -133,7 +99,6 @@ formulario.addEventListener("submit", function (e) {
     genero: document.getElementById("genero").value
   };
 
-  // Validación: Verificar si algún campo está vacío
   const hayCamposVacios = Object.values(nuevoRegistro).some(valor => valor === "");
 
   if (hayCamposVacios) {
@@ -141,21 +106,16 @@ formulario.addEventListener("submit", function (e) {
     return;
   }
 
-  // Guardamos el registro en el array
   registros.push(nuevoRegistro);
+  actualizarTabla(nuevoRegistro);
 
-  // Mostramos los datos en consola
   console.log("Registros actuales:");
   console.log(registros);
 
-  // Mostrar mensaje de éxito
   mostrarMensaje("exito", "Formulario enviado correctamente. ¡Gracias por registrarte!");
-
-  // (Opcional) Resetear formulario
   formulario.reset();
 });
 
-// Función para mostrar mensajes
 function mostrarMensaje(tipo, mensaje) {
   const mensajeExito = document.getElementById("mensaje-exito");
   const mensajeError = document.getElementById("mensaje-error");
@@ -170,7 +130,75 @@ function mostrarMensaje(tipo, mensaje) {
     mensajeExito.style.display = "none";
   }
 }
+
+function actualizarTabla(registro, index) {
+  const tabla = document.querySelector("#tabla-registros tbody");
+  const fila = document.createElement("tr");
+
+  fila.innerHTML = `
+    <td>${registro.item}</td>
+    <td>${registro.nombres}</td>
+    <td>${registro.apellidos}</td>
+    <td>${registro.tipoDocumento}</td>
+    <td>${registro.numeroDocumento}</td>
+    <td>${registro.telefono}</td>
+    <td>${registro.email}</td>
+    <td>${registro.fechaNacimiento}</td>
+    <td>${registro.genero}</td>
+    <td>
+      <button onclick="editarRegistro(this)" title="Editar">✏️</button>
+      <button onclick="eliminarRegistro(this)" title="Eliminar">🗑️</button>
+  `;
+
+  tabla.appendChild(fila);
+}
+
+function eliminarRegistro(boton) {
+  const fila = boton.closest("tr");
+  fila.remove();
+  mostrarMensaje("exito","Registro eliminado correctamente.");
+}
+
+function editarRegistro(boton) {
+  const fila = boton.closest("tr");
+  const celdas = fila.querySelectorAll("td");
+
+  document.getElementById("nombres").value = celdas[1].textContent;
+  document.getElementById("apellidos").value = celdas[2].textContent;
+  document.getElementById("tipoDocumento").value = celdas[3].textContent;
+  document.getElementById("numeroDocumento").value = celdas[4].textContent;
+  document.getElementById("telefono").value = celdas[5].textContent;
+  document.getElementById("email").value = celdas[6].textContent;
+  document.getElementById("fechaNacimiento").value = celdas[7].textContent;
+  document.getElementById("genero").value = celdas[8].textContent;
+
+  fila.remove();
+  mostrarMensaje("exito","Modifica los datos y vuelve a enviar el formulario.")
+}
+
+// mostrar modal personalizado
+function mostrarModalError(mensaje) {
+  const modal = document.getElementById("modal-error");
+  const textoError = document.getElementById("texto-error");
+  textoError.textContent = mensaje;
+  modal.style.display = "block";
+}
+
+function cerrarModal() {
+  document.getElementById("modal-error").style.display = "none";
+}
+
+
   </script>
+
+  <!-- Modal de error personalizado -->
+<div id="modal-error" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <p id="texto-error"></p>
+  </div>
+</div>
+
 </body>
 
 </html>
