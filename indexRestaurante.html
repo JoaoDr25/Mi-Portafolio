@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="contenidoFormulario">
+        <div class="titulo">
+            <h1>RESTAURANTE</h1>
+        </div>
+
+        <form id="formulario">
+            <label for="numero"> <strong>Número de Mesa</strong></label>
+            <input type="text" id="numero" class="numero" placeholder="Escriba el número de mesa">
+
+            <label for="descripcion"> <strong>Descripción de la Mesa</strong></label>
+            <input type="text" id="descripcion" class="descripcion" placeholder="Escriba la descripción de la mesa">
+
+            <label for="personas"> <strong>Número de Personas</strong></label>
+            <input type="text" id="personas" class="personas" placeholder="Escriba el número de personas">
+
+            <label for="estado"> <strong>Estado de la Mesa</strong></label>
+            <select name="estado" id="estado">
+                <option value="">Seleccionar...</option>
+                <option value="libre">Libre</option>
+                <option value="ocupado">Ocupado</option>
+                <option value="reservado">Reservado</option>
+            </select>
+
+            <div class="botones">
+                <button id="registrar"><strong>GUARDAR MESA</strong></button>
+            </div>
+        </form>
+    </div>
+
+    <div id="modalMesas" class="modalMesas">
+        <h2><strong>REGISTRO DE MESAS</strong></h2>
+
+
+        <div id="buscarMesa">
+            <label for="buscarMesa">Buscar Mesa: </label>
+            <input type="search" id="buscarMesa" placeholder=" Buscar por # de Mesa">
+        </div>
+
+        <div id="mesas">
+
+        </div>
+    </div>
+</body>
+
+<script>
+    let datosMesa = []
+    let modo = 0;
+    let numeroMesa = "";
+    let editandoMesa = "";
+
+
+    document.getElementById("registrar").addEventListener("click", (event) => {
+        event.preventDefault();
+        if (modo == 0) {
+            console.log("Estoy guardando...");
+            guardarMesa();
+
+            localStorage.setItem("datos", JSON.stringify(datosMesa));
+
+        } else if (modo == 1) {
+            console.log("Estoy editando...");
+            editarMesa();
+        }
+    })
+
+    function pintarMesas(lista = datosMesa) {
+        document.getElementById("mesas").textContent = ""
+        lista.forEach((item, i) => {
+            let divCard = document.createElement("div");
+            divCard.id = "divCard"
+            mesas.appendChild(divCard);
+
+            if (item.estado === "libre") {
+                divCard.style.backgroundColor = "#BDF057FF";
+                divCard.style.borderColor = "#33460FFF";
+            } else if (item.estado === "ocupado") {
+                divCard.style.backgroundColor = "#F86666FF";
+                divCard.style.borderColor = "#7A2A2AFF";
+            } else if (item.estado === "reservado") {
+                divCard.style.backgroundColor = "#FFD66DFF";
+                divCard.style.borderColor =  "#A37C18FF";
+            }
+
+            let numeroMesa = document.createElement("h4");
+            numeroMesa.id = "numeroMesa"
+            numeroMesa.textContent = `# ${item.numero}`;
+            divCard.appendChild(numeroMesa);
+
+            let imagenMesa = document.createElement("div");
+            imagenMesa.id = "imagenMesa"
+            let imagen = document.createElement("img");
+            imagen.id = "mesa"
+            imagen.src = "https://http2.mlstatic.com/D_Q_NP_2X_835035-MCO83954779410_042025-T.webp"
+            imagenMesa.appendChild(imagen);
+            divCard.appendChild(imagenMesa);
+
+            let informacionMesa = document.createElement("div");
+            informacionMesa.id = "informacionMesa"
+            divCard.appendChild(informacionMesa);
+
+            let descripcionMesa = document.createElement("p");
+            descripcionMesa.id = "descripcionMesa"
+            descripcionMesa.textContent = item.descripcion;
+            informacionMesa.appendChild(descripcionMesa);
+
+            let personasMesa = document.createElement("p");
+            personasMesa.id = "personasMesa"
+            personasMesa.textContent = `PERSONAS:  ${item.personas}`;
+            informacionMesa.appendChild(personasMesa);
+
+            let estadoMesa = document.createElement("p");
+            estadoMesa.id = "estadoMesa"
+            informacionMesa.appendChild(estadoMesa);
+
+            let botonesMesa = document.createElement("div");
+            botonesMesa.id = "botonesMesa"
+            informacionMesa.appendChild(botonesMesa);
+
+            let editarMesa = document.createElement("button");
+            editarMesa.id = "botonEditar"
+            editarMesa.textContent = "📚"
+            botonesMesa.appendChild(editarMesa);
+            editarMesa.addEventListener("click", () => {
+                document.getElementById("numero").value = item.numero;
+                document.getElementById("descripcion").value = item.descripcion;
+                document.getElementById("personas").value = item.personas;
+                document.getElementById("estado").value = item.estado;
+                document.getElementById("registrar").textContent = "EDITAR MESA";
+                modo = 1;
+                editandoMesa = item.numero;
+            })
+
+
+            let eliminarMesa = document.createElement("button");
+            eliminarMesa.id = "botonEliminar"
+            eliminarMesa.textContent = "❌"
+            botonesMesa.appendChild(eliminarMesa);
+            eliminarMesa.addEventListener("click", () => {
+                let indice = datosMesa.findIndex(it => it.numero == item.numero);
+                datosMesa.splice(indice, 1);
+                pintarMesas();
+            })
+        })
+    }
+
+    function guardarMesa() {
+        if (document.getElementById("numero").value == "") {
+            alert("Digite el numero de la mesa");
+        } else if (document.getElementById("descripcion").value.trim() == "") {
+            alert("Escriba la descripción de la mesa");
+        } else if (document.getElementById("personas").value.trim() == "") {
+            alert("Digite el numero de personas");
+        } else if (document.getElementById("estado").value == "") {
+            alert("Seleccione el estado de la mesa");
+        } else {
+            let numeroInput = document.getElementById("numero").value.trim();
+
+            let existe = datosMesa.some(m => m.numero === numeroInput);
+            if (existe) {
+                alert("Ya existe una mesa con ese número. Ingrese otro número.");
+                return;
+            }
+
+            let mesa = {
+                numero: numeroInput,
+                descripcion: document.getElementById("descripcion").value.trim(),
+                personas: document.getElementById("personas").value.trim(),
+                estado: document.getElementById("estado").value
+            }
+
+            datosMesa.unshift(mesa);
+            console.log(mesa);
+            alert("Mesa registrada exitosamente");
+            limpiar();
+            pintarMesas();
+        }
+    }
+
+    function editarMesa() {
+        let nuevoNumero = document.getElementById("numero").value.trim();
+        let nuevaDescripcion = document.getElementById("descripcion").value.trim();
+        let nuevasPersonas = document.getElementById("personas").value.trim();
+        let nuevoEstado = document.getElementById("estado").value;
+
+        if (nuevoNumero === "") {
+            alert("Digite el número de la mesa");
+            return;
+        } else if (nuevaDescripcion === "") {
+            alert("Escriba la descripción de la mesa");
+            return;
+        } else if (nuevasPersonas === "") {
+            alert("Digite el número de personas");
+            return;
+        } else if (nuevoEstado === "") {
+            alert("Seleccione el estado de la mesa");
+            return;
+        }
+
+
+        let existe = datosMesa.some((m, i) => m.numero === nuevoNumero && datosMesa[i].numero !== editandoMesa);
+        if (existe) {
+            alert("Ya existe otra mesa con ese número.");
+            return;
+        }
+
+        let indice = datosMesa.findIndex(it => it.numero == editandoMesa);
+        if (indice !== -1) {
+            datosMesa[indice].numero = nuevoNumero;
+            datosMesa[indice].descripcion = nuevaDescripcion;
+            datosMesa[indice].personas = nuevasPersonas;
+            datosMesa[indice].estado = nuevoEstado;
+
+            modo = 0;
+            editandoMesa = "";
+            console.log(editandoMesa);
+            document.getElementById("registrar").textContent = "GUARDAR MESA";
+            limpiar();
+            pintarMesas();
+        }
+    }
+
+    function limpiar() {
+        document.getElementById("numero").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("personas").value = "";
+        document.getElementById("estado").value = "";
+    }
+
+    document.getElementById("buscarMesa").addEventListener("input", (e) => {
+        let textoBusqueda = e.target.value.trim();
+
+        if (textoBusqueda === "") {
+            pintarMesas();
+            return;
+        }
+
+        let mesasFiltradas = datosMesa.filter(mesa => mesa.numero.startsWith(textoBusqueda));
+        pintarMesas(mesasFiltradas);
+    });
+
+
+</script>
+
+<style>
+    body {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #ffffff;
+    }
+
+    .contenidoFormulario {
+        width: 30%;
+        margin-top: 70px;
+        background-color: #fffcfc;
+        border: 2px solid #5a3e36;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        height: fit-content;
+    }
+
+    .titulo h1 {
+        display: flex;
+        justify-content: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 3rem;
+        color: #3f2c26;;
+    }
+
+    #formulario {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-self: center;
+    }
+
+    #formulario label {
+        font-family: math;
+        padding-top: 10px;
+        padding-bottom: 2px;
+        font-size: 1.05rem;
+    }
+
+    #formulario input {
+        height: 20px;
+    }
+
+    #formulario input::placeholder {
+        font-size: 0.8rem;
+    }
+
+    #estado {
+        height: 25px;
+    }
+
+    .botones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botones button:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px #fdfdfd;
+    }
+
+    #registrar {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.8rem;
+        margin: 20px 0 5px 0;
+        width: 50%;
+        padding: 4px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #201613;
+    }
+
+    #verMesas {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.8rem;
+        margin: 0 0 26px 0;
+        width: 50%;
+        font-weight: 500;
+    }
+
+    #modalMesas {
+        width: 60%;
+        background-color: #fffcfc;
+        border: 2px solid #5a3e36;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #modalMesas h2 {
+        display: flex;
+        justify-self: center;
+        font-family: 'Courier New', Courier, monospace;
+        margin-bottom: 10px;
+        color: #3f2c26;;
+    }
+
+    #buscarMesa {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 10px 10px;
+        font-family: cursive;
+    }
+
+    #numeroMesa {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0 15px 0;
+        font-size: 20px;
+        font-family: cursive;
+        font-weight: bold;
+        padding: 3px;
+    }
+
+    #mesas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    #divCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: inset;
+    }
+
+    #imagenMesa {
+        display: flex;
+        justify-content: center;
+    }
+
+    #mesa {
+        width: 160px;
+        height: 160px;
+        border-radius: 10px;
+        border: 2px solid black;
+    }
+
+    #informacionMesa {
+        width: 90%;
+    }
+
+    #informacionMesa p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+
+    #descripcionMesa {
+        padding: 2px 0 2px 0;
+        font-family: math;
+        font-size: 0.9rem;
+        text-transform: capitalize;
+    }
+
+    #personasMesa {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 2px;
+    }
+
+    #botonesMesa {
+        padding: 0 0 13px 0;
+        justify-self: center;
+    }
+
+    #botonesMesa button {
+        background-color: rgb(224, 224, 224);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+
+    #botonesMesa button:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px #030303;
+    }
+</style>
+
+</html>
