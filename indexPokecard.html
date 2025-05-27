@@ -12,75 +12,57 @@
 <body>
     <div class="tarjeta">
         <div class="header">
-
-            <div class="pokemon">
-                <h1 id="pokemonNombre">Nombre</h1>
-            </div>
-
-        </div>
-        <div class="pokemonImagen">
+            <h1 id="pokemonNombre">Nombre</h1>
             <p id="pokemonNumero"></p>
+        </div>
+
+        <div class="pokemonImagen">
             <img id="imagenPokemon" src="" alt="Imagen del Pokémon">
         </div>
+
         <div class="informacion">
-            <div class="bloqueInformacion tipoContenido" id="tipos">
-                <strong>Tipo:</strong>
-            </div>
-            <div class="bloqueInformacion" id="habilidades">
-                <strong>Habilidades:</strong>
-            </div>
-            <div class="bloqueInformacion" id="altura">
-                <strong>Altura:</strong>
-            </div>
-            <div class="bloqueInformacion" id="peso">
-                <strong>Peso:</strong>
-            </div>
+            <div id="tipos" class="bloqueInformacion tipoContenido"><strong>Tipo:</strong></div>
+            <div id="habilidades" class="bloqueInformacion"><strong>Habilidades:</strong></div>
+            <div id="altura" class="bloqueInformacion"><strong>Altura:</strong></div>
+            <div id="peso" class="bloqueInformacion"><strong>Peso:</strong></div>
         </div>
-        <div class="bloqueInformacion estadisticas">
-            <strong>Estadísticas:</strong>
 
-            <div class="barraEstadistica">
-                <label>HP</label>
-                <div class="barraFondo">
-                    <div id="hp" class="barraRelleno"></div>
+        <div class="estadisticas">
+            <div class="estadisticasTitulo">
+                <strong>ESTADISTICAS:</strong>
+            </div>
+            <div class="estadisticasContenido bloqueInformacion">
+                <div class="barraEstadistica"><span class="barraStats"><label>HP</label></span>
+                    <div class="barraFondo">
+                        <div id="hp" class="barraRelleno"><span class="valorStat">80/100</span></div>
+                    </div>
+                </div>
+                <div class="barraEstadistica"><label>Ataque</label>
+                    <div class="barraFondo">
+                        <div id="ataque" class="barraRelleno"><span class="valorStat">80/100</span></div>
+                    </div>
+                </div>
+                <div class="barraEstadistica"><label>Defensa</label>
+                    <div class="barraFondo">
+                        <div id="defensa" class="barraRelleno"><span class="valorStat">80/100</span></div>
+                    </div>
+                </div>
+                <div class="barraEstadistica"><label>Ataque Especial</label>
+                    <div class="barraFondo">
+                        <div id="ataqueEspecial" class="barraRelleno"><span class="valorStat">80/100</span></div>
+                    </div>
+                </div>
+                <div class="barraEstadistica"><label>Defensa Especial</label>
+                    <div class="barraFondo">
+                        <div id="defensaEspecial" class="barraRelleno"><span class="valorStat">80/100</span></div>
+                    </div>
+                </div>
+                <div class="barraEstadistica"><label>Velocidad</label>
+                    <div class="barraFondo">
+                        <div id="velocidad" class="barraRelleno"><span class="valorStat">80/100</span></span></div>
+                    </div>
                 </div>
             </div>
-
-            <div class="barraEstadistica">
-                <label>Ataque</label>
-                <div class="barraFondo">
-                    <div id="ataque" class="barraRelleno"></div>
-                </div>
-            </div>
-
-            <div class="barraEstadistica">
-                <label>Defensa</label>
-                <div class="barraFondo">
-                    <div id="defensa" class="barraRelleno"></div>
-                </div>
-            </div>
-
-            <div class="barraEstadistica">
-                <label>Ataque Especial</label>
-                <div class="barraFondo">
-                    <div id="ataqueEspecial" class="barraRelleno"></div>
-                </div>
-            </div>
-
-            <div class="barraEstadistica">
-                <label>Defensa Especial</label>
-                <div class="barraFondo">
-                    <div id="defensaEspecial" class="barraRelleno"></div>
-                </div>
-            </div>
-
-            <div class="barraEstadistica">
-                <label>Velocidad</label>
-                <div class="barraFondo">
-                    <div id="velocidad" class="barraRelleno"></div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -121,8 +103,7 @@
 
                 document.getElementById("pokemonNombre").textContent = capitalizar(data.name);
                 document.getElementById("pokemonNumero").textContent = `#${data.id.toString().padStart(3, '0')}`;
-                document.getElementById("imagenPokemon").src = data.sprites.front_default;
-
+                document.getElementById("imagenPokemon").src = data.sprites.other["official-artwork"].front_default;
 
                 const tipoDiv = document.getElementById("tipos");
                 const tarjeta = document.querySelector(".tarjeta");
@@ -150,7 +131,8 @@
 
                 tiposTraducidos.forEach(tipo => {
                     const span = document.createElement('span');
-                    span.textContent = tipo
+                    span.textContent = tipo;
+                    span.style.backgroundColor = coloresTipos[tipo] || '#ccc';
                     tipoDiv.appendChild(span);
                 });
 
@@ -162,7 +144,7 @@
                     return capitalizar(nombreEs ? nombreEs.name : h.ability.name);
                 });
                 const habilidades = await Promise.all(habilidad);
-                document.getElementById("habilidades").innerHTML = `<strong>Habilidades:</strong><br>${habilidades.join(', ')}`;
+                document.getElementById("habilidades").innerHTML = `<strong>Habilidades:</strong><br>${habilidades.join(', <br> ')}`;
                 document.getElementById("altura").innerHTML = `<strong>Altura:</strong><br>${data.height / 10} m`;
                 document.getElementById("peso").innerHTML = `<strong>Peso:</strong><br>${data.weight / 10} kg`;
 
@@ -175,17 +157,18 @@
                 document.getElementById("defensaEspecial").style.width = `${(estadisticas[4] / 100) * 100}%`;
                 document.getElementById("velocidad").style.width = `${(estadisticas[5] / 100) * 100}%`;
 
+                const nombresStats = ["hp", "ataque", "defensa", "ataqueEspecial", "defensaEspecial", "velocidad"];
+                estadisticas.forEach((valor, i) => {
+                    const statId = nombresStats[i];
+                    const barra = document.getElementById(statId);
+                    barra.style.width = `${(valor / 100) * 100}%`;
+                    barra.nextElementSibling.textContent = `${valor}/100`; // esto lo ponemos en HTML
+                });
+
 
             } catch (error) {
                 console.error("Error al cargar el Pokémon:", error);
             }
-        }
-
-        function cambiarPokemon(cambio) {
-            let nuevoId = actualId + cambio;
-            if (nuevoId < 1) nuevoId = 1;
-            if (nuevoId > 1010) nuevoId = 1010;
-            cargarPokemon(nuevoId);
         }
 
         document.addEventListener("DOMContentLoaded", () => {
