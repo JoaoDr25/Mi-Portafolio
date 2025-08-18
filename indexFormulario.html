@@ -8,19 +8,18 @@
   <title>Formulario de Registro</title>
 </head>
 
-<body>
 <div class="bodyFormulario">
 
   <form class="formulario" id="formulario">
     <h2>REGISTRARSE</h2>
     <label for="nombres">NOMBRES</label>
-    <input type="text" id="nombres" name="nombre" >
+    <input type="text" id="nombres" name="nombre">
 
     <label for="apellidos">APELLIDOS</label>
-    <input type="text" id="apellidos" name="apellidos" >
+    <input type="text" id="apellidos" name="apellidos">
 
     <label for="tipoDocumento">TIPO DE DOCUMENTO</label>
-    <select id="tipoDocumento" name="tipoDocumento" >
+    <select id="tipoDocumento" name="tipoDocumento">
       <option value="">Seleccionar...</option>
       <option value="tarjeta">Tarjeta de Identidad</option>
       <option value="cedula">Cédula de Ciudadania</option>
@@ -28,115 +27,150 @@
     </select>
 
     <label for="numeroDocumento">NÚMERO DE DOCUMENTO</label>
-    <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" >
+    <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento">
 
     <label for="numeroTelefono">NÚMERO DE TELEFONO</label>
-    <input type="tel" pattern="[0-9]{10}" id="telefono" name="telefono" >
+    <input type="tel" pattern="[0-9]{10}" id="telefono" name="telefono">
 
     <label for="email">EMAIL</label>
-    <input type="email" id="email" name="email" >
+    <input type="email" id="email" name="email">
 
     <label for="FechaNacimiento">FECHA DE NACIMIENTO</label>
-    <input type="date" id="fechaNacimiento" name="fechaNacimiento" >
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento">
 
     <label for="genero">GÉNERO</label>
-    <select id="genero" name="genero" >
+    <select id="genero" name="genero">
       <option value="">Seleccionar...</option>
       <option value="masculino">Masculino</option>
       <option value="femenino">Femenino</option>
       <option value="otro">Otro</option>
     </select>
 
-    <div id="mensaje-error" style="color: red; display: none;"></div>
-    <div id="mensaje-exito" style="color: rgb(8, 234, 8); display: none;"></div>
+    <div id="mensajeError" style="color: red; display: none;"></div>
+    <div id="mensajeExito" style="color: rgb(8, 234, 8); display: none;"></div>
 
     <button type="submit"><strong>ENVIAR</strong></button>
+    <button onclick="abrirModalTabla()" class="btnVerRegistros">REGISTROS</button>
   </form>
 
 
-<div id="contenedorTabla" style="margin-top: 20px;">
-  <table border="1" id="tabla-registros" style="width: 100%; border-collapse: collapse;">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Nombres</th>
-        <th>Apellidos</th>
-        <th>Tipo Documento</th>
-        <th>Número Documento</th>
-        <th>Telefono</th>
-        <th>Email</th>
-        <th>Fecha Nacimiento</th>
-        <th>Género</th>
-        <th>Acción</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-   
-    </tbody>
-  </table>
 </div>
 
+<div id="modalTabla" class="modal">
+  <div class="modalContenido">
+    <h1>REGISTROS</h1>
+    <span class="cerrar" onclick="cerrarModalTabla()">&times;</span>
+    <table border="1" id="tablaRegistros" style="justify-self: center;">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Tipo Documento</th>
+          <th>Número Documento</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Fecha Nacimiento</th>
+          <th>Género</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </div>
 
-  <script>
 
-const formulario = document.querySelector("#formulario");
-const registros = [];
+<div id="modalConfirmarEnvio" class="modal">
+  <div class="modalContenido">
+    <p>¿Deseas confirmar el envío del formulario?</p>
+    <button id="btnConfirmarEnvio">Confirmar</button>
+    <button onclick="cerrarModalEnvio()">Cancelar</button>
+  </div>
+</div>
 
-formulario.addEventListener("submit", function (e) {
-  e.preventDefault(); 
 
-  const nuevoRegistro = {
-    item: registros.length + 1,
-    nombres: document.getElementById("nombres").value.trim(),
-    apellidos: document.getElementById("apellidos").value.trim(),
-    tipoDocumento: document.getElementById("tipoDocumento").value,
-    numeroDocumento: document.getElementById("numeroDocumento").value.trim(),
-    telefono: document.getElementById("telefono").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    fechaNacimiento: document.getElementById("fechaNacimiento").value,
-    genero: document.getElementById("genero").value
-  };
+<div id="modalConfirmar" class="modal">
+  <div class="modalContenido">
+    <p>¿Deseas eliminar este registro?</p>
+    <button id="btnConfirmarEliminar">Eliminar</button>
+    <button onclick="cerrarModalConfirmar()">Cancelar</button>
+  </div>
+</div>
 
-  const hayCamposVacios = Object.values(nuevoRegistro).some(valor => valor === "");
+<script>
 
-  if (hayCamposVacios) {
-    mostrarMensaje("error", "Por favor, completa todos los campos.");
-    return;
+  const formulario = document.querySelector("#formulario");
+  const registros = [];
+  let filaAEliminar = null;
+  let filaEditando = null;
+
+  formulario.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nuevoRegistro = {
+      nombres: document.getElementById("nombres").value.trim(),
+      apellidos: document.getElementById("apellidos").value.trim(),
+      tipoDocumento: document.getElementById("tipoDocumento").value,
+      numeroDocumento: document.getElementById("numeroDocumento").value.trim(),
+      telefono: document.getElementById("telefono").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      fechaNacimiento: document.getElementById("fechaNacimiento").value,
+      genero: document.getElementById("genero").value
+    };
+
+    const errores = [];
+
+    if (!nuevoRegistro.nombres) errores.push("Escriba los nombres.");
+    if (!nuevoRegistro.apellidos) errores.push("Escriba los apellidos.");
+    if (!nuevoRegistro.tipoDocumento) errores.push("Seleccione el tipo de documento.");
+    if (!nuevoRegistro.numeroDocumento) errores.push("Escriba el número de documento.");
+    if (!nuevoRegistro.telefono) errores.push("Escriba el número de teléfono.");
+    if (!nuevoRegistro.email) errores.push("Escriba el email.");
+    if (!nuevoRegistro.fechaNacimiento) errores.push("Seleccione la fecha de nacimiento.");
+    if (!nuevoRegistro.genero) errores.push("Seleccione el género.");
+
+    if (errores.length > 0) {
+      if (errores.length === 1) {
+        mostrarMensaje("error", errores[0]);
+      } else {
+        mostrarMensaje("error", "Por favor, completa todos los campos.");
+      }
+      return;
+    }
+
+    mostrarModalEnvio(nuevoRegistro);
+  });
+
+  function mostrarMensaje(tipo, mensaje) {
+    const mensajeExito = document.getElementById("mensajeExito");
+    const mensajeError = document.getElementById("mensajeError");
+
+    if (tipo === "error") {
+      mensajeError.textContent = mensaje;
+      mensajeError.style.display = "block";
+      mensajeExito.style.display = "none";
+    } else {
+      mensajeExito.textContent = mensaje;
+      mensajeExito.style.display = "block";
+      mensajeError.style.display = "none";
+    }
   }
 
-  registros.push(nuevoRegistro);
-  actualizarTabla(nuevoRegistro);
+  function actualizarTabla() {
+    const tablaBody = document.querySelector("#tablaRegistros tbody");
+    tablaBody.innerHTML = "";
 
-  console.log("Registros actuales:");
-  console.log(registros);
-
-  mostrarMensaje("exito", "Formulario enviado correctamente. ¡Gracias por registrarte!");
-  formulario.reset();
-});
-
-function mostrarMensaje(tipo, mensaje) {
-  const mensajeExito = document.getElementById("mensaje-exito");
-  const mensajeError = document.getElementById("mensaje-error");
-
-  if (tipo === "exito") {
-    mensajeExito.textContent = mensaje;
-    mensajeExito.style.display = "block";
-    mensajeError.style.display = "none";
-  } else {
-    mensajeError.textContent = mensaje;
-    mensajeError.style.display = "block";
-    mensajeExito.style.display = "none";
+    registros.forEach((registro, index) => {
+      let nuevaFila = document.createElement("tr");
+      nuevaFila.innerHTML = generarHTMLFila(registro, index + 1);
+      tablaBody.appendChild(nuevaFila);
+    });
   }
-}
 
-function actualizarTabla(registro, index) {
-  const tabla = document.querySelector("#tabla-registros tbody");
-  const fila = document.createElement("tr");
-
-  fila.innerHTML = `
-    <td>${registro.item}</td>
+  function generarHTMLFila(registro, index) {
+    return `
+    <td>${index}</td>
     <td>${registro.nombres}</td>
     <td>${registro.apellidos}</td>
     <td>${registro.tipoDocumento}</td>
@@ -146,55 +180,82 @@ function actualizarTabla(registro, index) {
     <td>${registro.fechaNacimiento}</td>
     <td>${registro.genero}</td>
     <td>
-      <button onclick="editarRegistro(this)" title="Editar">✏️</button>
-      <button onclick="eliminarRegistro(this)" title="Eliminar">🗑️</button>
-  `;
+      <button onclick="editarRegistro(${index - 1})" title="Editar">✏️</button>
+      <button onclick="eliminarRegistro(${index - 1})" title="Eliminar">🗑️</button>
+    </td>`;
+  }
 
-  tabla.appendChild(fila);
-}
+  function editarRegistro(index) {
+    const registroAEditar = registros[index];
+    filaEditando = index;
 
-function eliminarRegistro(boton) {
-  const fila = boton.closest("tr");
-  fila.remove();
-  mostrarMensaje("exito","Registro eliminado correctamente.");
-}
+    cerrarModalTabla();
+    cerrarModalEnvio();
+    cerrarModalConfirmar();
 
-function editarRegistro(boton) {
-  const fila = boton.closest("tr");
-  const celdas = fila.querySelectorAll("td");
+    document.getElementById("nombres").value = registroAEditar.nombres;
+    document.getElementById("apellidos").value = registroAEditar.apellidos;
+    document.getElementById("tipoDocumento").value = registroAEditar.tipoDocumento;
+    document.getElementById("numeroDocumento").value = registroAEditar.numeroDocumento;
+    document.getElementById("telefono").value = registroAEditar.telefono;
+    document.getElementById("email").value = registroAEditar.email;
+    document.getElementById("fechaNacimiento").value = registroAEditar.fechaNacimiento;
+    document.getElementById("genero").value = registroAEditar.genero;
 
-  document.getElementById("nombres").value = celdas[1].textContent;
-  document.getElementById("apellidos").value = celdas[2].textContent;
-  document.getElementById("tipoDocumento").value = celdas[3].textContent;
-  document.getElementById("numeroDocumento").value = celdas[4].textContent;
-  document.getElementById("telefono").value = celdas[5].textContent;
-  document.getElementById("email").value = celdas[6].textContent;
-  document.getElementById("fechaNacimiento").value = celdas[7].textContent;
-  document.getElementById("genero").value = celdas[8].textContent;
-
-  fila.remove();
-  mostrarMensaje("exito","Modifica los datos y vuelve a enviar el formulario.")
-}
+    mostrarMensaje("exito", "Registro cargado para edición.");
+  }
 
 
-function mostrarModalError(mensaje) {
-  const modal = document.getElementById("modal-error");
-  const textoError = document.getElementById("texto-error");
-  textoError.textContent = mensaje;
-  modal.style.display = "block";
-}
+  function eliminarRegistro(index) {
+    filaAEliminar = index;
+    document.getElementById("modalConfirmar").style.display = "block";
+  }
 
-function cerrarModal() {
-  document.getElementById("modal-error").style.display = "none";
-}
-  </script>
+  function cerrarModalConfirmar() {
+    document.getElementById("modalConfirmar").style.display = "none";
+    filaAEliminar = null;
+  }
 
-<div id="modal-error" class="modal">
-  <div class="modal-contenido">
-    <span class="cerrar" onclick="cerrarModal()">&times;</span>
-    <p id="texto-error"></p>
-  </div>
-</div>
+  document.getElementById("btnConfirmarEliminar").addEventListener("click", function () {
+    if (filaAEliminar !== null) {
+      registros.splice(filaAEliminar, 1);
+      actualizarTabla();
+    }
+    cerrarModalConfirmar();
+    mostrarMensaje("exito", "Registro eliminado correctamente.");
+  });
+
+  function mostrarModalEnvio(registro) {
+    document.getElementById("modalConfirmarEnvio").style.display = "block";
+    document.getElementById("btnConfirmarEnvio").onclick = () => {
+      if (filaEditando !== null) {
+        registros[filaEditando] = { ...registro };
+        filaEditando = null;
+        mostrarMensaje("exito", "Registro actualizado correctamente.");
+      } else {
+        registros.push(registro);
+        mostrarMensaje("exito", "Formulario enviado correctamente. ¡Gracias por registrarte!");
+      }
+
+      actualizarTabla();
+      formulario.reset();
+      cerrarModalEnvio();
+    };
+  }
+
+  function cerrarModalEnvio() {
+    document.getElementById("modalConfirmarEnvio").style.display = "none";
+  }
+
+  function abrirModalTabla() {
+    document.getElementById("modalTabla").style.display = "block";
+  }
+
+  function cerrarModalTabla() {
+    document.getElementById("modalTabla").style.display = "none";
+  }
+
+</script>
 
 </body>
 
