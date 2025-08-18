@@ -30,7 +30,7 @@
             cursor: pointer;
         }
 
-        .text_bar2 h4:hover{
+        .text_bar2 h4:hover {
             opacity: 1;
             transform: scale(1.1);
         }
@@ -191,10 +191,11 @@
 
         .proyects button {
             font-size: 12px;
-            cursor:pointer;
+            cursor: pointer;
             margin: 20px;
             margin-inline: 30%;
-            margin-bottom: 25px;;
+            margin-bottom: 25px;
+            ;
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
@@ -221,6 +222,115 @@
             padding-right: 7.5%;
             font-size: 15px;
         }
+
+        @media (max-width: 1024px) {
+            .barra_superior {
+                padding-left: 10px;
+                padding-right: 50px;
+                width: 95%;
+            }
+
+            .text_bar2 {
+                margin-right: 0;
+                gap: 20px;
+            }
+
+            .space {
+                flex-direction: column;
+                padding-top: 100px;
+                text-align: center;
+            }
+
+            .img1 {
+                width: 80%;
+            }
+
+            .text1 {
+                width: 90%;
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+
+            .container_space3 {
+                grid-template-columns: repeat(2, 1fr);
+                padding-inline: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .barra_superior {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                position: static;
+                text-align: center;
+                max-width: 95%;
+            }
+
+            .text_bar2 {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .text_inside {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .text_bar1 h3,
+            .text_bar2 h4 {
+                margin: 5px;
+            }
+
+            .space {
+                padding-top: 30px;
+            }
+
+            .img1,
+            .text1 {
+                width: auto;
+                padding: 0 15px;
+                margin-bottom: 20px;
+            }
+
+            .img1 img {
+                width: 100%;
+            }
+
+            .text1 h1 {
+                font-size: 40px;
+            }
+
+            .text1 p {
+                    width: 100%;
+            }
+
+            #seg p {
+                margin-inline: 20px;
+            }
+
+            .space3 h1 {
+                font-size: 40px;
+            }
+
+            .container_space3 {
+                grid-template-columns: 1fr;
+                padding-inline: 15px;
+            }
+
+            .proyects {
+                margin-bottom: 20px;
+            }
+
+            .barra_inferior {
+                text-align: center;
+                padding-bottom: 1px;
+                padding-top: 1px;
+            }
+        }
     </style>
 </head>
 
@@ -241,7 +351,8 @@
     <div class="container">
         <div class="space">
             <div class="img1">
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/imagen%20escritorio%20sin%20fondo.png?v=1741596482380" alt="Hombre sentado en escritorio">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/imagen%20escritorio%20sin%20fondo.png?v=1741596482380"
+                    alt="Hombre sentado en escritorio">
             </div>
             <div class="text1">
                 <h1>¿Quien Soy?</h1>
@@ -258,7 +369,8 @@
     </div>
     <div class="space" id="seg">
         <div class="circle">
-            <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/imagen%20avatar1.avif?v=1741596476610" alt="Imagen de Avatar">
+            <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/imagen%20avatar1.avif?v=1741596476610"
+                alt="Imagen de Avatar">
         </div>
         <div class="text2">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur modi voluptates eveniet commodi ea
@@ -271,7 +383,8 @@
         <h1>Mis Proyectos</h1>
         <div class="container_space3">
             <div class="proyects">
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto1.webp?v=1741596485208" alt="Imagen de Proyecto #1">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto1.webp?v=1741596485208"
+                    alt="Imagen de Proyecto #1">
                 <div class="title_proyect">
                     <h3>Proyecto 1</h3>
                 </div>
@@ -283,7 +396,8 @@
                 </button>
             </div>
             <div class="proyects">
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto2.jpg?v=1741596487990" alt="Imagen de Proyecto #2">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto2.jpg?v=1741596487990"
+                    alt="Imagen de Proyecto #2">
                 <div class="title_proyect">
                     <h3>Proyecto 2</h3>
                 </div>
@@ -295,7 +409,8 @@
                 </button>
             </div>
             <div class="proyects">
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto3.png?v=1741596498131" alt="Imagen de proyecto #3">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto3.png?v=1741596498131"
+                    alt="Imagen de proyecto #3">
                 <div class="title_proyect">
                     <h3>Proyecto 3</h3>
                 </div>
@@ -307,7 +422,8 @@
                 </button>
             </div>
             <div class="proyects">
-                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto4.jpg?v=1741596499747" alt="Imagen de Proyecto #4">
+                <img src="https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/proyecto4.jpg?v=1741596499747"
+                    alt="Imagen de Proyecto #4">
                 <div class="title_proyect">
                     <h3>Proyecto 4</h3>
                 </div>
