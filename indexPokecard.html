@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="stylePokecard.css">
     <title>Tarjeta de Pokémon</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -101,7 +104,7 @@
                 const data = res.data;
                 actualId = data.id;
 
-                document.getElementById("pokemonNombre").textContent = capitalizar(data.name);
+                document.getElementById("pokemonNombre").textContent = data.name.toUpperCase();
                 document.getElementById("pokemonNumero").textContent = `#${data.id.toString().padStart(3, '0')}`;
                 document.getElementById("imagenPokemon").src = data.sprites.other["official-artwork"].front_default;
 

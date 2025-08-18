@@ -3,16 +3,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    font-family: 'Press Start 2P', cursive;
 }
 
 
 body::before {
     content: "";
     position: fixed;
-    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/fondo-bodyPokecard.jpg?v=1748369773293'); 
+    background-image: url('https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/fondo-bodyPokecard.jpg?v=1748369773293');
     background-size: cover;
-    background-position: right 10%;
+    background-position: center;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,23 +22,24 @@ body::before {
 }
 
 .tarjeta {
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.4s ease-in-out;
-    width: 30%;
-    height: 90%;
+    width: 500px;
+    height: auto;
     padding: 25px;
     position: relative;
     text-align: center;
     overflow: hidden;
     border: 1px solid black;
+    max-width: 90%;
 }
 
 .tarjeta:hover {
-   background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
@@ -53,6 +55,7 @@ body::before {
     height: 100%;
     background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.5s ease-in-out;
+    z-index: -1;
 }
 
 .tarjeta:hover::before {
@@ -84,10 +87,15 @@ body::before {
     text-shadow: 0 0 5px rgba(133, 43, 43, 0.5);
 }
 
+#pokemonNombre {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 #pokemonNumero {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: black;
-    margin: 3px 0 10px 0;
+    margin: 15px 0 10px 0;
 }
 
 .pokemonImagen {
@@ -97,8 +105,7 @@ body::before {
     justify-content: center;
     position: relative;
     border: 1px solid black;
-    border-radius: 7px;
-    background-image:  linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1)), url("https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/fondo_Pokem%C3%B3n.avif?v=1748369747200");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1)), url("https://cdn.glitch.global/4c46cef8-6e9c-4ebc-80b4-5ceb24089ee9/fondo_Pokem%C3%B3n.avif?v=1748369747200");
     background-position: top;
     background-size: cover;
 }
@@ -117,14 +124,19 @@ body::before {
 .informacion {
     display: flex;
     border: 1px solid black;
-    border-radius: 7px;
     padding: 10px;
+    gap: 30px;
 }
 
 .bloqueInformacion {
-    width: 48%;
+    width: 50%;
     margin: 5px 0;
-    font-size: 0.9rem;
+    font-size: 0.65rem;
+}
+
+.bloqueInformacion strong {
+    display: block;
+    margin-bottom: 4px
 }
 
 .tipoContenido span {
@@ -134,7 +146,11 @@ body::before {
     display: inline-block;
     color: #000;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+}
+
+#habilidades {
+    line-height: 1.1;
 }
 
 .estadisticas {
@@ -149,38 +165,42 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     margin: 5px 0;
 }
 
 .barraEstadistica {
     margin-bottom: 1px;
     display: flex;
+    align-items: center;
     width: 200%;
     justify-content: space-between;
-    gap: 10px;
     padding-bottom: 5px;
+    gap: 10px;
 }
 
 .valorStat {
-    min-width: 60px;
+    min-width: 30px;
     text-align: right;
-    font-size: 0.7rem;
+    font-size: 0.4rem;
     color: black;
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 .barraEstadistica label {
     font-weight: bold;
     margin-bottom: 4px;
+    flex-grow: 1;
+    text-align: left;
 }
 
 .barraFondo {
     background: #ddd;
     border-radius: 10px;
     height: 15px;
-    width: 65%;
     overflow: hidden;
+    position: relative;
+    width: 64%;
 }
 
 .barraRelleno {
@@ -192,6 +212,6 @@ body::before {
     text-align: right;
     padding-right: 5px;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: bold;
 }
