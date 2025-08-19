@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styleVeterinaria.css">
-	<title>Document</title>
+	<title>Administrador de Citas</title>
 </head>
 
 <body>
@@ -195,12 +195,44 @@
 				return null;
 			};
 
+			const fechaActual = new Date();
+			const fechaCitaSeleccionada = new Date(`${fecha}T${hora}`);
+			if (fechaCitaSeleccionada < fechaActual) {
+				Swal.fire({
+					icon: 'warning',
+					title: 'Fecha invalida',
+					text: 'La fecha debe ser posterior al momento actual.',
+					confirmButtonText: 'Entendido',
+				});
+				return null;
+			};
+
+			const [horaSeleccionada, minutosSeleccionados] = hora.split(":").map(Number);
+			if (horaSeleccionada < 8 || horaSeleccionada > 20 || (horaSeleccionada === 20 && minutosSeleccionados > 0)) {
+				Swal.fire({
+					icon: 'warning',
+					title: 'Hora no válida',
+					text: 'La hora debe estar entre las 08:00 y las 20:00!',
+					confirmButtonText: 'Entendido',
+				});
+				return null;
+			};
+
 			const telefono = telefonoContacto.value.trim();
 			if (telefono === "") {
 				Swal.fire({
 					icon: 'warning',
 					title: 'Campo requerido',
 					text: 'Por favor digite un telefono de contacto!',
+					confirmButtonText: 'Entendido',
+				});
+				return null;
+			};
+			if (telefono.length < 10) {
+				Swal.fire({
+					icon: 'warning',
+					title: 'Telefono Inválido',
+					text: 'El número de telefono debe tener al menos 10 dígitos!',
 					confirmButtonText: 'Entendido',
 				});
 				return null;
@@ -265,6 +297,7 @@
 				cerrarModal();
 			};
 		};
+
 
 		function limpiarFormulario() {
 			formulario.reset();
